@@ -1,5 +1,6 @@
 export type Tablet = {
 	sDirection: boolean
+	holes: number
 	threads: Array<Thread>
 }
 

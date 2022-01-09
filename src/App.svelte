@@ -1,10 +1,8 @@
 <script lang="ts">
-	import { tablets, weaves, weaveRows, rotationDirections } from './stores.js';
+	import { tablets, weaves, weaveRows, rotationDirections, instructions } from './stores.js';
     import Tablet from "./components/Tablet.svelte";
     import TabletWeave from "./components/TabletWeave.svelte";
     
-    let rotationDirection = true;
-	
 	function addTablet(event) {
 		tablets.update(t => {
 			const lastTablet = t[t.length - 1];
@@ -20,7 +18,7 @@
 	}
 	
 	function removeTablet(event) {
-		if ($tablets.length > 1) {
+		if ($tablets.length > 1 && $tablets.length < 26) {
 			tablets.update(t => {
 				t.pop();
 				return t;
@@ -56,8 +54,17 @@
 				<div></div>
 			    <div class="uk-width-auto">
 		        
+		        	<div class="holes">
+		        		<div class="holeIndex"></div>
+			        	{#each $tablets[0].threads as holes, index (index)}
+			        		<div class="holeIndex">
+			        			{String.fromCharCode(65 + index)}
+			        		</div>
+		        		{/each}
+	        		</div>
+	        		
 					{#each $tablets as tablet, index (index)}
-						<Tablet bind:config={tablet}/>
+						<Tablet index={index} bind:config={tablet}/>
 					{/each}
 						
 			    </div>
@@ -78,22 +85,18 @@
 			    	<h3>Anleitung</h3>
 			    </div>
 			    <div class="uk-width-auto uk-margin-medium-bottom">
-			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom " uk-icon="plus" on:click|preventDefault={addWeaveRow}></button>
-			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small" uk-icon="minus" on:click|preventDefault={removeWeaveRow}></button>
+			    	<h3>Vorderseite</h3>
 			    </div>
 			    <div class="uk-text-center">
 			    	<h3>Rückseite</h3>
 			    </div>
-			    <div class="uk-text-small">
 			    
-			    	{#each [...Array($weaveRows).keys()] as key, index (index)}
-		        		{#if $rotationDirections.includes(index)}
-				    		{rotationDirection = !rotationDirection}
-		        		{/if}
-			    		{index+1}. {rotationDirection ? 'vorwärts' : 'rückwärts'}
-		        		<br>
-					{/each}
-					
+			    <div class="uk-text-small">
+			    	<ol>
+				    	{#each $instructions as instruction, index (index)}
+				    		<li>Brettchen 1 bis {$tablets.length}: <a on:click={() => changeDirection(index)}>{instruction ? 'vorwärts' : 'rückwärts'}</a></li>
+						{/each}
+					</ol>
 			    </div>
 			    <div class="uk-width-auto uk-margin-medium-top">
 		        
@@ -109,10 +112,32 @@
 						
 			    </div>
 			    <div>
-			    	
 			    </div>
+			    
+			    <div></div>
+			    <div class="uk-width-auto uk-margin-medium-top">
+			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom " uk-icon="plus" on:click|preventDefault={addWeaveRow}></button>
+			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small" uk-icon="minus" on:click|preventDefault={removeWeaveRow}></button>
+			    </div>
+			    <div></div>
 		    </div>
 		</div>
 	</div>
 	
 </main>
+
+<style>
+	.holes {
+		width: 41px;
+		height: 200px;
+		float: left;
+	}
+	.holeIndex {
+		width: 20px;
+		height: 20px;
+		margin: 1px;
+		padding: 10px;
+		background-color: white;
+		text-align: center;
+	}
+</style>

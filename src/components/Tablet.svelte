@@ -1,21 +1,41 @@
 <script lang="ts">
     import Thread from "./Thread.svelte";
     
-    export let id;
-    let holes = [0, 1, 2, 3];
+    export let config;
+	
+	function toggleDirection() {
+		config.sDirection = !config.sDirection;
+	}
+    
 </script>
 
 <div class="tablet">
-	{#each holes as hole, index (index)}
-		<Thread tablet={id} hole={index} on:updateThread/>
+	{#each config.threads as thread, index (index)}
+		<Thread bind:config={thread}/>
 	{/each}
+	<div class="threadDirection">
+		<button class="uk-button uk-button-default" on:click={toggleDirection}>
+			{#if config.sDirection}
+			  S
+			{:else}
+			  Z
+			{/if}
+		</button> 
+	</div>
 </div>
 
 <style>
 	.tablet {
-		width: 50px;
-		height: 160px;
-		background-color: #BBBBBB;
+		width: 41px;
+		height: 200px;
 		float: left;
+	}
+	.threadDirection {
+		width: 41px;
+		height: 40px;
+		background-color: lightgray;
+	}
+	.threadDirection button {
+		padding: 0 16px;
 	}
 </style>

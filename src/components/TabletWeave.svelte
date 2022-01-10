@@ -15,8 +15,4 @@
 		width: 14px;
 		float: left;
 	}
-	.weaveInfo {
-		width: 25px;
-		float: left;
-	}
 </style>

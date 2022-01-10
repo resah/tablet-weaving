@@ -19,6 +19,8 @@ weaveRows.subscribe((value) => localStorage.weaveRows = value);
 tablets.subscribe((value) => localStorage.tablets = JSON.stringify(value));
 rotationDirections.subscribe((value) => localStorage.rotationDirections = JSON.stringify(value));
 
+// derived stores
+
 export const instructions = derived([weaveRows, rotationDirections], ([$weaveRows, $rotationDirections]) => {
 	let rotationDirection = true;
 	return [...Array($weaveRows).keys()].map(i => {
@@ -35,14 +37,39 @@ export const weaves = derived([weaveRows, tablets, rotationDirections], ([$weave
 		const threads = tablet.threads;
 		const numberOfHoles = threads.length;
 		let tabletDirection = tablet.sDirection;
-		let index = -1;
+		let index = 0;
 
 		return {
 			weaves: [...Array($weaveRows).keys()].map(i => {
 				if ($rotationDirections.includes(i)) {
 					tabletDirection = !tabletDirection;
 				}
-				index = index + (tabletDirection ? -1 : 1);
+				index = index + ($rotationDirections.includes(i) ? -1 : 1);
+				const weaveColor = threads[Math.abs(index) % numberOfHoles].color;
+				return {
+					color: weaveColor,
+					sDirection: tabletDirection
+				};
+			})
+		};
+	});
+});
+
+
+export const weavesBack = derived([weaveRows, tablets, rotationDirections], ([$weaveRows, $tablets, $rotationDirections]) => {
+	
+	return $tablets.map(tablet => {
+		const threads = tablet.threads;
+		const numberOfHoles = threads.length;
+		let tabletDirection = !tablet.sDirection;
+		let index = 2;
+
+		return {
+			weaves: [...Array($weaveRows).keys()].map(i => {
+				if ($rotationDirections.includes(i)) {
+					tabletDirection = !tabletDirection;
+				}
+				index = index + ($rotationDirections.includes(i) ? -1 : 1);
 				const weaveColor = threads[Math.abs(index) % numberOfHoles].color;
 				return {
 					color: weaveColor,

@@ -9,7 +9,7 @@
 		width: 13px;
 		height: 45px;
 		margin-top: -25px;
-		border: 1px solid #999999;
+		border: 1px solid #AAAAAA;
 		
 		transform: skew(0, 60deg);
 	}

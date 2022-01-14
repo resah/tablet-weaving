@@ -1,0 +1,17 @@
+<svg width="75" height="125" viewbox="0 0 75 125" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="svg_17">
+   <path d="m2.91666,3.33333l0,116.24999l66.25,-39.37776l0,-65.91494l-66.25001,-10.95729z" fill="#bfbfbf" id="svg_16" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null"/>
+   <ellipse cx="14.15702" cy="20.11168" fill="#ffffff" id="svg_7" rx="3.9171" ry="6.33468" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null"/>
+   <ellipse cx="13.6461" cy="98.26797" fill="#ffffff" id="svg_8" rx="3.9171" ry="6.33468" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null"/>
+   <ellipse cx="62.0137" cy="22.851" fill="#ffffff" id="svg_9" rx="2.0437" ry="2.91053" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null"/>
+   <ellipse cx="62.18402" cy="73.78528" fill="#ffffff" id="svg_10" rx="2.0437" ry="2.91053" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null"/>
+   <text fill="#000000" font-family="Serif" font-size="30" id="svg_11" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="0" text-anchor="middle" transform="matrix(0.40874, 0, 0, 0.410898, 1.7245, 1.96367)" x="46.66666" xml:space="preserve" y="76.66666">A</text>
+   <text fill="#000000" font-family="Serif" font-size="30" id="svg_13" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="0" text-anchor="middle" transform="matrix(0.40874, 0, 0, 0.410898, 1.7245, 1.96367)" x="47.08333" xml:space="preserve" y="216.66666">B</text>
+   <text fill="#000000" font-family="Serif" font-size="22" id="svg_14" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="0" text-anchor="middle" transform="matrix(0.40874, 0, 0, 0.410898, 1.7245, 1.96367)" x="131.66666" xml:space="preserve" y="169.58333">C</text>
+   <text fill="#000000" font-family="Serif" font-size="22" id="svg_15" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="0" text-anchor="middle" transform="matrix(0.40874, 0, 0, 0.410898, 1.7245, 1.96367)" x="134.58332" xml:space="preserve" y="74.16666">D</text>
+  </g>
+ </g>
+</svg>

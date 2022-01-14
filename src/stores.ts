@@ -9,11 +9,12 @@ const initTablets = [
 
 const storedWeaveRows = localStorage.weaveRows ? parseInt(localStorage.weaveRows) : 19;
 const storedTablets = localStorage.tablets ? JSON.parse(localStorage.tablets) : initTablets;
-const storedRotationDirections = localStorage.rotationDirections ? JSON.parse(localStorage.rotationDirections) : [];
+const storedRotationDirections = localStorage.rotationDirections ? JSON.parse(localStorage.rotationDirections) : {};
 
 export const weaveRows = writable(storedWeaveRows);
 export const tablets = writable(storedTablets);
 export const rotationDirections = writable(storedRotationDirections);
+export const switchInstructions = writable([]);
 
 weaveRows.subscribe((value) => localStorage.weaveRows = value);
 tablets.subscribe((value) => localStorage.tablets = JSON.stringify(value));
@@ -32,50 +33,39 @@ export const instructions = derived([weaveRows, rotationDirections], ([$weaveRow
 });
 
 export const weaves = derived([weaveRows, tablets, rotationDirections], ([$weaveRows, $tablets, $rotationDirections]) => {
-	
-	return $tablets.map(tablet => {
-		const threads = tablet.threads;
-		const numberOfHoles = threads.length;
-		let tabletDirection = tablet.sDirection;
-		let index = 0;
-
-		return {
-			weaves: [...Array($weaveRows).keys()].map(i => {
-				if ($rotationDirections.includes(i)) {
-					tabletDirection = !tabletDirection;
-				}
-				index = index + ($rotationDirections.includes(i) ? -1 : 1);
-				const weaveColor = threads[Math.abs(index) % numberOfHoles].color;
-				return {
-					color: weaveColor,
-					sDirection: tabletDirection
-				};
-			})
-		};
-	});
+	return $tablets.map((tablet, tabletIndex) => generateWeaves($weaveRows, $rotationDirections, tablet, tabletIndex, 0, tablet.sDirection));
 });
-
 
 export const weavesBack = derived([weaveRows, tablets, rotationDirections], ([$weaveRows, $tablets, $rotationDirections]) => {
-	
-	return $tablets.map(tablet => {
-		const threads = tablet.threads;
-		const numberOfHoles = threads.length;
-		let tabletDirection = !tablet.sDirection;
-		let index = 2;
-
-		return {
-			weaves: [...Array($weaveRows).keys()].map(i => {
-				if ($rotationDirections.includes(i)) {
-					tabletDirection = !tabletDirection;
-				}
-				index = index + ($rotationDirections.includes(i) ? -1 : 1);
-				const weaveColor = threads[Math.abs(index) % numberOfHoles].color;
-				return {
-					color: weaveColor,
-					sDirection: tabletDirection
-				};
-			})
-		};
-	});
+	return $tablets.map((tablet, tabletIndex) => generateWeaves($weaveRows, $rotationDirections, tablet, tabletIndex, 2, !tablet.sDirection));
 });
+
+function generateWeaves(weaveRows, rotationDirections, tablet, tabletIndex, colorIndex, direction) {
+	const threads = tablet.threads;
+	const numberOfHoles = threads.length;
+	
+	let previousRotation = false;
+
+	return {
+		weaves: [...Array(weaveRows).keys()].map(i => {
+			let offset = 1;
+			let tabletDirection = direction;
+			
+			const rotateBack = typeof rotationDirections[i] !== 'undefined' && typeof rotationDirections[i][tabletIndex] !== 'undefined';
+			if (rotateBack) {
+				tabletDirection = !direction;
+				offset = -1;
+			}
+			if (previousRotation != rotateBack) {
+				offset = 0; 
+			}
+			colorIndex = (colorIndex + offset + threads.length) % numberOfHoles;
+			const weaveColor = threads[colorIndex].color;
+			previousRotation = rotateBack;
+			return {
+				color: weaveColor,
+				sDirection: tabletDirection
+			};
+		})
+	};
+}

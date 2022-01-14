@@ -9,14 +9,19 @@ Still work in progress and currently supports the following features:
 * Set initial S/Z-direction for each tablet
 * Switch rotation direction for each row
 * Pattern is stored in local storage
+* Show back of pattern
+* Switch rotation direction for a single tablet
 
 Planned features:
-* Show back of pattern
 * Reset all values to defaults
 * Store multiple patterns and/or link to pattern by URL
-* Switch rotation direction for a single tablet
 * Set number of holes for tablets
-* "Missed hole“ or "pebble weave"
+* "Missed hole“ or "pebble weave" and selecting weft (thread) colour
+* Setting thread thickness
+* Custom colour picker
+* Inverted view (bottom-up, which seems to be used more often)
+* Select template: "threaded in pattern", "double face", "3/1 broken twill", ...
+* PWA
 
 Not planned for now:
 * Set number of holes for each tablet individually

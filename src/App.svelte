@@ -1,7 +1,9 @@
 <script lang="ts">
+    import * as animateScroll from "svelte-scrollto";
 	import { tablets, weaves, weavesBack, weaveRows, rotationDirections, instructions } from './stores.js';
     import Tablet from "./components/Tablet.svelte";
-    import TabletWeave from "./components/TabletWeave.svelte";
+    import Weave from "./components/Weave.svelte";
+    import Instructions from "./components/Instructions.svelte";
     
 	function addTablet(event) {
 		tablets.update(t => {
@@ -28,20 +30,11 @@
 	
 	function addWeaveRow(event) {
 		$weaveRows = $weaveRows + 1;
+		animateScroll.scrollToBottom();
 	}
 	
 	function removeWeaveRow(event) {
 		$weaveRows = $weaveRows - 1;
-	}
-	
-	function changeDirection(index) {
-		if ($rotationDirections.includes(index)) {
-			$rotationDirections = $rotationDirections.filter(it => it !== index);
-		} else {
-			$rotationDirections.push(index);
-			$rotationDirections = $rotationDirections;
-		}
-		console.log($rotationDirections);
 	}
 </script>
 
@@ -50,8 +43,10 @@
 	<div class="uk-section uk-section-xsmall uk-section-muted">
 		<div class="uk-container uk-container-small uk-container-expand">
 			<h2>Schärbrief</h2>
-			<div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-3 uk-grid-match uk-flex-center uk-flex-middle" uk-grid>
-				<div></div>
+			<div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-3 uk-flex-center uk-flex-middle" uk-grid>
+				<div>
+					<img src="assets/tablet-4-holes.svg" alt="Tablet hole index description: A = top front; B - bottom front; C - bottom back; D - top back"/>
+				</div>
 			    <div class="uk-width-auto">
 		        
 		        	<div class="holes">
@@ -78,9 +73,10 @@
 
 	<div class="uk-section uk-section-xsmall">
 		<div class="uk-container uk-container-small uk-container-expand">
-			<h2>Vorschau</h2>
 			
-			<div class="uk-grid-column-small uk-grid-row-small uk-child-width-1-3 uk-grid-match uk-flex-center uk-flex-top" uk-grid>
+			<div class="uk-grid-column-small uk-grid-row-small uk-child-width-1-3 uk-flex-center uk-flex-top" uk-grid>
+			
+				<!-- First row -->
 			    <div class="uk-first-column uk-text-center">
 			    	<h3>Webbrief</h3>
 			    </div>
@@ -91,42 +87,22 @@
 			    	<h3>Rückseite</h3>
 			    </div>
 			    
+			    <!-- Second row -->
 			    <div class="uk-first-column uk-text-small">
-			    	<ol>
-				    	{#each $instructions as instruction, index (index)}
-				    		<li>Brettchen 1 bis {$tablets.length}: <a on:click={() => changeDirection(index)}>{instruction ? 'vorwärts' : 'rückwärts'}</a></li>
-						{/each}
-					</ol>
+					<Instructions />
 			    </div>
 			    <div class="uk-margin-medium-top">
-		        
-	        		<div>
-		        		<div class="uk-text-small" style="width: 25px; float: left; text-align: right; padding-right: 5px; margin-top: -25px;">
-				        	{#each [...Array($weaveRows).keys()] as key, index (index)}
-				        		<a class="b" style="height: 17px; padding-top: 3.6px; display:block;" on:click={() => changeDirection(index)}>{index + 1}</a>
-							{/each}
-		        		</div>
-		        		
-						{#each $weaves as tablet, index (index)}
-							<TabletWeave config={tablet}/>
-						{/each}
-					</div>
-						
+		        	<Weave weavePattern={$weaves}/>
 			    </div>
 			    <div class="uk-margin-medium-top">
-			    
-			    	<div>
-						{#each $weavesBack as tablet, index (index)}
-							<TabletWeave config={tablet}/>
-						{/each}
-					</div>
-			    
+			    	<Weave weavePattern={$weavesBack}/>
 			    </div>
 			    
+			    <!-- Third row -->
 			    <div class="uk-first-column"></div>
 			    <div class="uk-margin-medium-top">
-			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom " uk-icon="plus" on:click|preventDefault={addWeaveRow}></button>
-			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small" uk-icon="minus" on:click|preventDefault={removeWeaveRow}></button>
+			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="plus" on:click|preventDefault={addWeaveRow}></button>
+			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="minus" on:click|preventDefault={removeWeaveRow}></button>
 			    </div>
 			    <div></div>
 		    </div>

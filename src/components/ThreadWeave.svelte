@@ -11,9 +11,9 @@
 		margin-top: -25px;
 		border: 1px solid #AAAAAA;
 		
-		transform: skew(0, 60deg);
+		transform: skew(0, -60deg);
 	}
 	.sDirection {
-		transform: skew(0, -60deg);
+		transform: skew(0, 60deg);
 	}
 </style>

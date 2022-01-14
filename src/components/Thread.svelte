@@ -10,7 +10,7 @@
 	.thread {
 		width: 40px;
 		height: 40px;
-		margin: 1px;
+		margin: 1px 0;
 	}
 	input {
 		width: 40px;
@@ -21,6 +21,10 @@
 		border-radius: 0;
 	}
 	input[type="color"]::-moz-color-swatch {
+		outline: none;
+		border: 0 transparent;
+	}
+	input[type="color"]::-webkit-color-swatch {
 		outline: none;
 		border: 0 transparent;
 	}

@@ -20,7 +20,7 @@
 	{/each}
 	
 	<div class="threadDirection">
-		<button class="uk-button uk-button-default" on:click={toggleDirection}>
+		<button on:click={toggleDirection}>
 			{#if config.sDirection}
 			  S
 			{:else}
@@ -32,8 +32,10 @@
 
 <style>
 	.tablet {
-		width: 41px;
+		width: 40px;
 		float: left;
+		border: 1px solid black;
+		margin-right: 2px;
 	}
 	.tabletIndex {
 		height: 30px;
@@ -42,11 +44,15 @@
 		background-color: white;
 	}
 	.threadDirection {
-		width: 41px;
+		width: 40px;
 		height: 40px;
 		background-color: lightgray;
 	}
 	.threadDirection button {
 		padding: 0 16px;
+		width: 40px;
+		height: 40px;
+		border: 0;
+		background-color: lightgray;
 	}
 </style>

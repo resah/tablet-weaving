@@ -1,7 +1,5 @@
-
-
 <script lang="ts">
-	import { tablets, weavesFront, weavesBack, weaveRows, initStores } from './stores.js';
+	import { tablets, weavesFront, weavesBack, weaveRows, initStores, templates } from './stores.js';
 	import { onMount } from 'svelte';
     import * as animateScroll from "svelte-scrollto";
     import Tablet from "./components/Tablet.svelte";
@@ -11,6 +9,10 @@
 	onMount(() => {
 		initStores();
 	});
+	
+	$: if (window.location.search) {
+		initStores();
+	}
     
 	function addTablet(event) {
 		tablets.update(t => {
@@ -47,10 +49,31 @@
 
 <main>
 
+	<nav class="uk-navbar-container" uk-navbar>
+	    <div class="uk-navbar-center">
+	        Brettchenweben
+    	</div>
+	    <div class="uk-navbar-right">
+	        <ul class="uk-navbar-nav">
+	            <li>
+	                <a  href={'#'}>Vorlagen</a>
+	                <div class="uk-navbar-dropdown">
+	                    <ul class="uk-nav uk-navbar-dropdown-nav">
+	                    	{#each $templates as template, index (index)}
+		                        <li><a href="?{(new Date()).getTime()}#{template.hash}">{template.name}</a></li>
+                        	{/each}
+	                    </ul>
+	                </div>
+	            </li>
+	        </ul>
+	    </div>
+	</nav>
+
+
 	<div class="uk-section uk-section-xsmall uk-section-muted">
 		<div class="uk-container uk-container-small uk-container-expand">
 			<h2>Schärbrief</h2>
-			<div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-6 uk-flex-center uk-flex-middle" uk-grid>
+			<div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-6@m uk-flex-center uk-flex-middle" uk-grid>
 				<div class="uk-text-center">
 					<img src="assets/tablet-4-holes.svg" alt="Tablet hole index description: A = top front; B - bottom front; C - bottom back; D - top back"/>
 				</div>
@@ -87,7 +110,7 @@
 	<div class="uk-section uk-section-xsmall">
 		<div class="uk-container uk-container-small uk-container-expand">
 			
-			<div class="uk-grid-column-small uk-grid-row-small uk-child-width-1-3 uk-flex-center uk-flex-top" uk-grid>
+			<div class="uk-grid-column-small uk-grid-row-small uk-child-width-1-3@m uk-flex-center uk-flex-top" uk-grid>
 			
 				<!-- First row -->
 			    <div class="uk-first-column uk-text-center">
@@ -113,7 +136,7 @@
 			    
 			    <!-- Third row -->
 			    <div class="uk-first-column"></div>
-			    <div class="uk-margin-medium-top uk-text-center">
+			    <div class="uk-margin-large-top uk-text-center">
 			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="plus" 
 			    		on:click|preventDefault={addWeaveRow}
 			    		uk-tooltip="Webreihe hinzufügen"></button>
@@ -129,6 +152,10 @@
 </main>
 
 <style>
+	.uk-navbar-nav > li > a {
+		min-height: 50px;
+	}
+
 	.holes {
 		width: 40px;
 		margin-right: 2px;

@@ -12,6 +12,7 @@ Still work in progress and currently supports the following features:
 * Show back of pattern
 * Switch rotation direction for a single tablet
 * Link to pattern by URL
+* Select template by name
 
 Planned features:
 * Reset all values to defaults
@@ -20,8 +21,12 @@ Planned features:
 * Setting thread thickness
 * Custom colour picker
 * Inverted view (bottom-up, which seems to be used more often)
-* Select template: "threaded in pattern", "double face", "3/1 broken twill", ...
 * PWA
+* Convenience:
+  * Switch front/back
+  * Colour randomizer
+  * Minimize instructions panel
+  * Minimize back view
 
 Not planned for now:
 * Set number of holes for each tablet individually

@@ -35,11 +35,11 @@
 		{#each [...Array($weaveRows).keys()] as row, i (i)}
 			<tr>
 				<th class="uk-text-right">
-					<a on:click={() => changeDirectionForRow(i)} uk-tooltip="Drehrichtung für alle Brettchen umkehren">{i + 1}</a>
+					<a href={'#'} on:click={() => changeDirectionForRow(i)} uk-tooltip="Drehrichtung für alle Brettchen umkehren">{i + 1}</a>
 				</th>
 				{#each $tablets as tablet, j (j)}
 					<td class="{isActive(i, j) ? 'active' : ''}">
-						<a class="cellLink" on:click={() => changeDirectionForCell(i, j)} uk-tooltip="Drehrichtung für Brettchen umkehren"></a>
+						<a href={'#'} class="cellLink" on:click={() => changeDirectionForCell(i, j)} uk-tooltip="Brettchen {j + 1},{i + 1}">x</a>
 					</td>
 				{/each}
 			</tr>
@@ -53,7 +53,7 @@
 		border-collapse: collapse;
 	}
 	th, td {
-		width: 20px;
+		min-width: 10px;
 		height: 15px;
 		border: 1px solid black;
 		line-height: 0.8em;
@@ -63,8 +63,9 @@
 	}
 	.cellLink {
 		display: block;
-		width: 28px;
+		min-width: 10px;
 		height: 18px;
+		color: transparent;
 	}
 	.active {
 		background-color: #CCCCCC;

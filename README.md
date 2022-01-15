@@ -11,10 +11,10 @@ Still work in progress and currently supports the following features:
 * Pattern is stored in local storage
 * Show back of pattern
 * Switch rotation direction for a single tablet
+* Link to pattern by URL
 
 Planned features:
 * Reset all values to defaults
-* Store multiple patterns and/or link to pattern by URL
 * Set number of holes for tablets
 * "Missed hole“ or "pebble weave" and selecting weft (thread) colour
 * Setting thread thickness

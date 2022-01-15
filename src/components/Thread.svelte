@@ -2,7 +2,7 @@
 	export let config;
 </script>
 
-<div class="thread" style={`background-color: ${config.color}`}>
+<div class="thread" style={`background-color: ${config.color}`} uk-tooltip="Farbe wählen">
 	<input type="color" bind:value={config.color} on:click/>
 </div>
 

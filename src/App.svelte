@@ -1,9 +1,16 @@
+
+
 <script lang="ts">
+	import { tablets, weavesFront, weavesBack, weaveRows, initStores } from './stores.js';
+	import { onMount } from 'svelte';
     import * as animateScroll from "svelte-scrollto";
-	import { tablets, weaves, weavesBack, weaveRows, rotationDirections, instructions } from './stores.js';
     import Tablet from "./components/Tablet.svelte";
     import Weave from "./components/Weave.svelte";
     import Instructions from "./components/Instructions.svelte";
+    
+	onMount(() => {
+		initStores();
+	});
     
 	function addTablet(event) {
 		tablets.update(t => {
@@ -43,29 +50,35 @@
 	<div class="uk-section uk-section-xsmall uk-section-muted">
 		<div class="uk-container uk-container-small uk-container-expand">
 			<h2>Schärbrief</h2>
-			<div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-3 uk-flex-center uk-flex-middle" uk-grid>
-				<div>
+			<div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-6 uk-flex-center uk-flex-middle" uk-grid>
+				<div class="uk-text-center">
 					<img src="assets/tablet-4-holes.svg" alt="Tablet hole index description: A = top front; B - bottom front; C - bottom back; D - top back"/>
 				</div>
-			    <div class="uk-width-auto">
+			    <div class="uk-width-2-3 uk-text-center">
 		        
-		        	<div class="holes">
-		        		<div class="holeIndex"></div>
-			        	{#each $tablets[0].threads as holes, index (index)}
-			        		<div class="holeIndex">
-			        			{String.fromCharCode(65 + index)}
-			        		</div>
-		        		{/each}
-	        		</div>
-	        		
-					{#each $tablets as tablet, index (index)}
-						<Tablet index={index} bind:config={tablet}/>
-					{/each}
+					<div class="uk-flex uk-flex-center">
+			        	<div class="holes">
+			        		<div class="holeIndex"></div>
+				        	{#each $tablets[0].threads as holes, index (index)}
+				        		<div class="holeIndex">
+				        			{String.fromCharCode(65 + index)}
+				        		</div>
+			        		{/each}
+		        		</div>
+		        		
+						{#each $tablets as tablet, index (index)}
+							<Tablet index={index} bind:config={tablet}/>
+						{/each}
+					</div>		        
 						
 			    </div>
-			    <div>
-			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom " uk-icon="plus" on:click|preventDefault={addTablet}></button><br>
-			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small" uk-icon="minus" on:click|preventDefault={removeTablet}></button>
+			    <div class="uk-text-center">
+			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom " uk-icon="plus" 
+			    		on:click|preventDefault={addTablet}
+			    		uk-tooltip="Brettchen hinzufügen"></button><br>
+			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small" uk-icon="minus" 
+			    		on:click|preventDefault={removeTablet}
+			    		uk-tooltip="Brettchen entfernen"></button>
 			    </div>
 			</div>
 		</div>
@@ -80,7 +93,7 @@
 			    <div class="uk-first-column uk-text-center">
 			    	<h3>Webbrief</h3>
 			    </div>
-			    <div class="uk-text-center uk-margin-medium-bottom">
+			    <div class="uk-text-center uk-margin-small-bottom">
 			    	<h3>Vorderseite</h3>
 			    </div>
 			    <div class="uk-text-center">
@@ -92,7 +105,7 @@
 					<Instructions />
 			    </div>
 			    <div class="uk-margin-medium-top">
-		        	<Weave weavePattern={$weaves}/>
+		        	<Weave weavePattern={$weavesFront}/>
 			    </div>
 			    <div class="uk-margin-medium-top">
 			    	<Weave weavePattern={$weavesBack}/>
@@ -100,9 +113,13 @@
 			    
 			    <!-- Third row -->
 			    <div class="uk-first-column"></div>
-			    <div class="uk-margin-medium-top">
-			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="plus" on:click|preventDefault={addWeaveRow}></button>
-			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="minus" on:click|preventDefault={removeWeaveRow}></button>
+			    <div class="uk-margin-medium-top uk-text-center">
+			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="plus" 
+			    		on:click|preventDefault={addWeaveRow}
+			    		uk-tooltip="Webreihe hinzufügen"></button>
+			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="minus" 
+			    		on:click|preventDefault={removeWeaveRow}
+			    		uk-tooltip="Webreihe entfernen"></button>
 			    </div>
 			    <div></div>
 		    </div>
@@ -113,14 +130,13 @@
 
 <style>
 	.holes {
-		width: 41px;
-		height: 200px;
-		float: left;
+		width: 40px;
+		margin-right: 2px;
 	}
 	.holeIndex {
 		width: 20px;
 		height: 20px;
-		margin: 1px;
+		margin: 1px 0;
 		padding: 10px;
 		background-color: white;
 		text-align: center;

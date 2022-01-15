@@ -5,10 +5,11 @@
     export let weavePattern;
 </script>
 
-<div>
-	<div class="uk-text-small" style="width: 25px; float: left; text-align: right; padding-right: 5px; margin-top: -25px;">
+<div class="uk-flex uk-flex-center">
+
+	<div class="tabletWeaveIndices uk-text-small">
     	{#each [...Array($weaveRows).keys()] as key, index (index)}
-    		<div class="b" style="height: 18px; padding-top: 3.6px; display:block;">
+    		<div class="tabletWeaveIndex">
     			{index + 1}
     		</div>
 		{/each}
@@ -17,7 +18,18 @@
 	{#each weavePattern as tablet, index (index)}
 		<TabletWeave config={tablet}/>
 	{/each}
+	
 </div>
 
 <style>
+	.tabletWeaveIndices {
+		width: 25px;
+		text-align: right;
+		padding-right: 5px;
+		margin-top: -25px;
+	}
+	.tabletWeaveIndex {
+		height: 18px;
+		padding-top: 3.7px;
+	}
 </style>

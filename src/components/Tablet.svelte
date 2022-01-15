@@ -11,7 +11,7 @@
 </script>
 
 <div class="tablet">
-	<div class="tabletIndex uk-text-center">
+	<div class="tabletIndex uk-text-center" uk-tooltip="Brettchen #{index + 1}">
 		{index + 1}
 	</div>
 	
@@ -20,7 +20,7 @@
 	{/each}
 	
 	<div class="threadDirection">
-		<button on:click={toggleDirection}>
+		<button on:click={toggleDirection} uk-tooltip="Schärung umkehren">
 			{#if config.sDirection}
 			  S
 			{:else}
@@ -33,7 +33,6 @@
 <style>
 	.tablet {
 		width: 40px;
-		float: left;
 		border: 1px solid black;
 		margin-right: 2px;
 	}
@@ -42,11 +41,13 @@
 		width: 40px;
 		padding-top: 10px;
 		background-color: white;
+		border-bottom: 1px solid black;
 	}
 	.threadDirection {
 		width: 40px;
 		height: 40px;
 		background-color: lightgray;
+		border-top: 1px solid black;
 	}
 	.threadDirection button {
 		padding: 0 16px;

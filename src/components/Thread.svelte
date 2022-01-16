@@ -3,18 +3,17 @@
 </script>
 
 <div class="thread" style={`background-color: ${config.color}`} uk-tooltip="Farbe wählen">
-	<input type="color" bind:value={config.color} on:click/>
+	<input type="color" bind:value={config.color} />
 </div>
 
 <style>
 	.thread {
-		width: 40px;
-		height: 40px;
+		height: 25px;
 		margin: 1px 0;
 	}
 	input {
-		width: 40px;
-		height: 40px;
+		width: 100%;
+		height: 100%;
 		padding: 0;
 		margin: 0;
 		border: 0;

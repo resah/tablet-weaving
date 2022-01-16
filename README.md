@@ -13,12 +13,12 @@ Still work in progress and currently supports the following features:
 * Switch rotation direction for a single tablet
 * Link to pattern by URL
 * Select template by name
+* Setting thread thickness
 
 Planned features:
 * Reset all values to defaults
 * Set number of holes for tablets
 * "Missed hole“ or "pebble weave" and selecting weft (thread) colour
-* Setting thread thickness
 * Custom colour picker
 * Inverted view (bottom-up, which seems to be used more often)
 * PWA

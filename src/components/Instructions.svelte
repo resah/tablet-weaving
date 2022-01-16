@@ -5,6 +5,10 @@
 		return (typeof $rotationDirections[i] !== 'undefined') && (typeof $rotationDirections[i][j] !== 'undefined') && ($rotationDirections[i][j] === true);
 	};
 	
+	function resetDirections() {
+		$rotationDirections = {};
+	}
+	
 	function changeDirectionForRow(row) {
 		$tablets.forEach((element, column) => {
 			changeDirectionForCell(row, column);
@@ -24,46 +28,53 @@
 	}
 </script>
 
-<div class="uk-flex uk-flex-center">
-	<table>
+<table>
+	<tr uk-sticky>
+		<th>
+			<a href="javascript:void(0)" uk-icon="icon: trash; ratio: 0.7" on:click={resetDirections}></a>
+		</th>
+		{#each $tablets as tablet, j (j)}
+			<th>{j + 1}</th>
+		{/each}
+	</tr>
+	{#each [...Array($weaveRows).keys()] as row, i (i)}
 		<tr>
-			<th></th>
+			<th class="uk-text-right">
+				<a href="javascript:void(0)" on:click={() => changeDirectionForRow(i)} uk-tooltip="Drehrichtung für alle Brettchen umkehren">{i + 1}</a>
+			</th>
 			{#each $tablets as tablet, j (j)}
-				<th>{j + 1}</th>
+				<td class="{isActive(i, j) ? 'active' : ''}">
+					<a href="javascript:void(0)" class="cellLink" on:click={() => changeDirectionForCell(i, j)} uk-tooltip="Brettchen {j + 1},{i + 1}">x</a>
+				</td>
 			{/each}
 		</tr>
-		{#each [...Array($weaveRows).keys()] as row, i (i)}
-			<tr>
-				<th class="uk-text-right">
-					<a href={'#'} on:click={() => changeDirectionForRow(i)} uk-tooltip="Drehrichtung für alle Brettchen umkehren">{i + 1}</a>
-				</th>
-				{#each $tablets as tablet, j (j)}
-					<td class="{isActive(i, j) ? 'active' : ''}">
-						<a href={'#'} class="cellLink" on:click={() => changeDirectionForCell(i, j)} uk-tooltip="Brettchen {j + 1},{i + 1}">x</a>
-					</td>
-				{/each}
-			</tr>
-		{/each}
-	</table>
-</div>
+	{/each}
+</table>
 
 <style>
 	table {
 		border: 1px solid black;
 		border-collapse: collapse;
 	}
+	tr {
+		background-color: #FFFFFF;
+		padding: 0 1px;
+	}
 	th, td {
-		min-width: 10px;
-		height: 15px;
-		border: 1px solid black;
-		line-height: 0.8em;
+		min-width: 12px;
+		height: 18.7px;
+		border: 1px solid #999999;
+		line-height: 1.3em;
+		font-size: 10px;
+		color: #333333;
 	}
 	th {
-		padding: 0 5px;
+		border-top: 0px;
+		border-left: 0px;
 	}
 	.cellLink {
 		display: block;
-		min-width: 10px;
+		width: 100%;
 		height: 18px;
 		color: transparent;
 	}

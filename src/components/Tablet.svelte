@@ -10,9 +10,9 @@
     
 </script>
 
-<div class="tablet">
+<div class="tablet uk-flex-auto">
 	<div class="tabletIndex uk-text-center" uk-tooltip="Brettchen #{index + 1}">
-		{index + 1}
+		{#if index < 9}&nbsp;{/if}{index + 1}
 	</div>
 	
 	{#each config.threads as thread, index (index)}
@@ -32,28 +32,27 @@
 
 <style>
 	.tablet {
-		width: 40px;
 		border: 1px solid black;
 		margin-right: 2px;
+		max-width: 30px;
 	}
 	.tabletIndex {
-		height: 30px;
-		width: 40px;
-		padding-top: 10px;
+		height: 20px;
 		background-color: white;
 		border-bottom: 1px solid black;
 	}
 	.threadDirection {
-		width: 40px;
-		height: 40px;
+		height: 25px;
 		background-color: lightgray;
 		border-top: 1px solid black;
+		text-align: center;
 	}
 	.threadDirection button {
-		padding: 0 16px;
-		width: 40px;
-		height: 40px;
+		padding: 0;
+		margin: 0;
 		border: 0;
 		background-color: lightgray;
+		height: 100%;
+		width: 100%;
 	}
 </style>

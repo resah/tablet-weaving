@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { tablets } from '../stores.js';
+	import { tablets } from '../stores/stores.js';
     import Tablet from "./Tablet.svelte";
     
-	function addTablet(event) {
+	const addTablet = (event) => {
 		tablets.update(t => {
 			const lastTablet = t[t.length - 1];
-			const newTablet = {
+			const newTablet: Tablet = {
 				sDirection: lastTablet.sDirection, 
+				holes: 4,
 				threads: lastTablet.threads.map(hole => {
 					return { color: hole.color };
 				})
@@ -16,7 +17,7 @@
 		});
 	}
 	
-	function removeTablet(event) {
+	const removeTablet = (event) => {
 		if ($tablets.length > 1) {
 			tablets.update(t => {
 				t.pop();
@@ -41,7 +42,7 @@
 		</div>
 
 		{#each $tablets as tablet, index (index)}
-			<Tablet index={index} bind:config={tablet}/>
+			<Tablet index={index} bind:tablet/>
 		{/each}
 	</div>		        
 	

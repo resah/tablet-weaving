@@ -1,21 +1,21 @@
 <script lang="ts">
-	import { tablets, weaveRows, rotationDirections } from '../stores.js';
+	import { tablets, weaveRows, rotationDirections } from '../stores/stores.js';
 	
 	$: isActive = (i, j) => {
 		return (typeof $rotationDirections[i] !== 'undefined') && (typeof $rotationDirections[i][j] !== 'undefined') && ($rotationDirections[i][j] === true);
 	};
 	
-	function resetDirections() {
+	const resetDirections = () => {
 		$rotationDirections = {};
 	}
 	
-	function changeDirectionForRow(row) {
+	const changeDirectionForRow = (row: number) => {
 		$tablets.forEach((element, column) => {
 			changeDirectionForCell(row, column);
 		});
 	}
 	
-	function changeDirectionForCell(row, column) {
+	const changeDirectionForCell = (row: number, column: number) => {
 		if (typeof $rotationDirections[row] === 'undefined') {
 			$rotationDirections[row] = {};
 		}
@@ -31,7 +31,7 @@
 <table>
 	<tr uk-sticky>
 		<th>
-			<a href="javascript:void(0)" uk-icon="icon: trash; ratio: 0.7" on:click={resetDirections}></a>
+			<button type="button" uk-icon="icon: trash; ratio: 0.7" on:click={resetDirections}></button>
 		</th>
 		{#each $tablets as tablet, j (j)}
 			<th>{j + 1}</th>
@@ -40,11 +40,11 @@
 	{#each [...Array($weaveRows).keys()] as row, i (i)}
 		<tr>
 			<th class="uk-text-right">
-				<a href="javascript:void(0)" on:click={() => changeDirectionForRow(i)} uk-tooltip="Drehrichtung für alle Brettchen umkehren">{i + 1}</a>
+				<button type="button" on:click={() => changeDirectionForRow(i)} uk-tooltip="Drehrichtung für alle Brettchen umkehren">{i + 1}</button>
 			</th>
 			{#each $tablets as tablet, j (j)}
 				<td class="{isActive(i, j) ? 'active' : ''}">
-					<a href="javascript:void(0)" class="cellLink" on:click={() => changeDirectionForCell(i, j)} uk-tooltip="Brettchen {j + 1},{i + 1}">x</a>
+					<button type="button" class="cellLink" on:click={() => changeDirectionForCell(i, j)} uk-tooltip="Brettchen {j + 1},{i + 1}">x</button>
 				</td>
 			{/each}
 		</tr>
@@ -80,5 +80,12 @@
 	}
 	.active {
 		background-color: #CCCCCC;
+	}
+	button {
+		display: inline;
+		border: 0;
+		background-color: transparent;
+		padding: 0;
+		margin: 0;
 	}
 </style>

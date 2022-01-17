@@ -10,7 +10,7 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             <li>
-                <a href="javascript:void(0)">Vorlagen</a>
+                <a href={'#'}>Vorlagen</a>
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                     	{#each $templates as template, index (index)}
@@ -20,7 +20,7 @@
                 </div>
             </li>
             <li>
-                <a href="javascript:void(0)">Anzeige</a>
+                <a href={'#'}>Anzeige</a>
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                     	<li class="uk-nav-header">Vorschau Gewebe</li>

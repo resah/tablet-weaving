@@ -1,9 +1,11 @@
 <script lang="ts">
-	export let config;
+	export let thread: Thread;
 </script>
 
-<div class="thread" style={`background-color: ${config.color}`} uk-tooltip="Farbe wählen">
-	<input type="color" bind:value={config.color} />
+<div class="thread" 
+	uk-tooltip="Farbe wählen"
+	style={`background-color: ${thread.color}`} >
+	<input type="color" bind:value={thread.color} />
 </div>
 
 <style>

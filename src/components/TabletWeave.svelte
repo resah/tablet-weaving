@@ -1,21 +1,22 @@
 <script lang="ts">
 	import { appConfig } from '../stores/appConfig.js';
     import ThreadWeave from "./ThreadWeave.svelte";
+	import type { Weave } from '../model/weave.type';
     
-    export let config;
-    export let tabletIndex;
+    export let weaves: Weave[];
+    export let tabletIndex: number;
     
-    let final = {
+    const final: Weave = {
 		color: '#ffffff',
 		sDirection: true
 	};
 </script>
 
 <div class="tablet weaveSize{$appConfig.weaveSize}">
-	{#each config.weaves as weave, index (index)}
+	{#each weaves as weave, index (index)}
 		<ThreadWeave weave={weave} tabletIndex={tabletIndex} weaveRow={index} />
 	{/each}
-	<ThreadWeave tabletIndex={tabletIndex} weaveRow={config.weaves.length} weave={final} classNames="final"/>
+	<ThreadWeave tabletIndex={tabletIndex} weaveRow={weaves.length} weave={final} classNames="final"/>
 </div>
 
 <style>

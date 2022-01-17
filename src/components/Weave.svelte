@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { appConfig } from '../stores/appConfig.js';
-	import { weaveRows } from '../stores.js';
+	import { weaveRows } from '../stores/stores.js';
     import TabletWeave from "./TabletWeave.svelte";
+	import type { Weave } from '../model/weave.type';
     
-    export let weavePattern;
+    export let weavePattern: Weave[][];
 </script>
 
 <div class="uk-flex uk-flex-center">
@@ -16,7 +17,7 @@
 	</div>
 	
 	{#each weavePattern as tablet, index (index)}
-		<TabletWeave config={tablet} tabletIndex={index}/>
+		<TabletWeave weaves={tablet} tabletIndex={index}/>
 	{/each}
 </div>
 

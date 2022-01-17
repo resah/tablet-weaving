@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { tablets, weavesFront, weavesBack, weaveRows, initStores, templates, appConfig } from './stores.js';
+	import { weavesFront, weavesBack, weaveRows, initStores, templates, appConfig } from './stores/stores.js';
 	import { onMount } from 'svelte';
     import * as animateScroll from "svelte-scrollto";
     import NavBar from "./components/NavBar.svelte";
@@ -14,12 +14,12 @@
 		initStores();
 	});
 	
-	function addWeaveRow(event) {
+	const addWeaveRow = (event) => {
 		$weaveRows = $weaveRows + 1;
 		animateScroll.scrollToBottom();
 	}
 	
-	function removeWeaveRow(event) {
+	const removeWeaveRow = (event) => {
 		$weaveRows = $weaveRows - 1;
 	}
 </script>
@@ -43,16 +43,18 @@
 				<div class="uk-flex-none">
 					<ul class="uk-iconnav uk-iconnav-vertical">
 					    <li hidden={!hiddenInstructions}>
-					    	<a href="javascript:void(0)" uk-icon="icon: thumbnails"
+					    	<button type="button"
+					    		uk-icon="icon: thumbnails"
 					    		uk-tooltip="Webbrief anzeigen"  
-					    		on:click={() => hiddenInstructions = false}></a>
+					    		on:click={() => hiddenInstructions = false}></button>
 				    	</li>
 					</ul>
 				</div>
 			    <div class="uk-first-column uk-text-center" hidden={hiddenInstructions}>
 			    	<h3>
 			    		Webbrief 
-			    		<button type="button" class="uk-button uk-button-link" 
+			    		<button type="button"
+			    			class="uk-button uk-button-link" 
 			    			on:click={() => hiddenInstructions = true}><span class="uk-margin-small-right" uk-icon="shrink"></span></button>
 		    		</h3>
 			    </div>
@@ -62,16 +64,18 @@
 			    <div class="uk-text-center" hidden={hiddenWeaveBack}>
 			    	<h3>
 			    		Rückseite
-			    		<button type="button" class="uk-button uk-button-link" 
+			    		<button type="button"
+			    			class="uk-button uk-button-link" 
 			    			on:click={() => hiddenWeaveBack = true}><span class="uk-margin-small-right" uk-icon="shrink"></span></button>
 		    		</h3>
 			    </div>
 				<div class="uk-flex-none">
 					<ul class="uk-iconnav uk-iconnav-vertical">
 					    <li hidden={!hiddenWeaveBack}>
-					    	<a href="javascript:void(0)" uk-icon="icon: grid"
+					    	<button type="button"
+					    		uk-icon="icon: grid"
 					    		uk-tooltip="Rückseite des Webbandes anzeigen" 
-					    		on:click={() => hiddenWeaveBack = false}></a>
+					    		on:click={() => hiddenWeaveBack = false}></button>
 				    	</li>
 					</ul>
 				</div>

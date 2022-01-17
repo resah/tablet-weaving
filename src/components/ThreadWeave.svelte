@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { appConfig } from '../stores/appConfig.js';
+	import type { Weave } from '../model/weave.type';
 
-	export let tabletIndex;
-	export let weaveRow;
-	export let weave;
-	export let classNames = '';
+	export let tabletIndex: number;
+	export let weaveRow: number;
+	export let weave: Weave;
+	export let classNames: string = '';
 </script>
 
 <div class="weave weaveSize{$appConfig.weaveSize} {classNames}"

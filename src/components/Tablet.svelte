@@ -1,11 +1,11 @@
 <script lang="ts">
     import Thread from "./Thread.svelte";
     
-    export let index;
-    export let config;
+    export let index: number;
+    export let tablet: Tablet;
 	
-	function toggleDirection() {
-		config.sDirection = !config.sDirection;
+	const toggleDirection = () => {
+		tablet.sDirection = !tablet.sDirection;
 	}
     
 </script>
@@ -15,13 +15,13 @@
 		{#if index < 9}&nbsp;{/if}{index + 1}
 	</div>
 	
-	{#each config.threads as thread, index (index)}
-		<Thread bind:config={thread}/>
+	{#each tablet.threads as thread, index (index)}
+		<Thread bind:thread/>
 	{/each}
 	
 	<div class="threadDirection">
 		<button on:click={toggleDirection} uk-tooltip="Schärung umkehren">
-			{#if config.sDirection}
+			{#if tablet.sDirection}
 			  S
 			{:else}
 			  Z

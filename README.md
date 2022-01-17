@@ -14,6 +14,9 @@ Still work in progress and currently supports the following features:
 * Link to pattern by URL
 * Select template by name
 * Setting thread thickness
+* Convenience:
+  * Minimize instructions panel
+  * Minimize back view
 
 Planned features:
 * Reset all values to defaults
@@ -25,8 +28,6 @@ Planned features:
 * Convenience:
   * Switch front/back
   * Colour randomizer
-  * Minimize instructions panel
-  * Minimize back view
 
 Not planned for now:
 * Set number of holes for each tablet individually

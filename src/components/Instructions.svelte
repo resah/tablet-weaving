@@ -44,7 +44,7 @@
 			</th>
 			{#each $tablets as tablet, j (j)}
 				<td class="{isActive(i, j) ? 'active' : ''}">
-					<button type="button" class="cellLink" on:click={() => changeDirectionForCell(i, j)} uk-tooltip="Brettchen {j + 1},{i + 1}">x</button>
+					<button type="button" class="cellLink" on:click={() => changeDirectionForCell(i, j)} uk-tooltip="{j + 1}, {i + 1}">x</button>
 				</td>
 			{/each}
 		</tr>

@@ -17,6 +17,7 @@ Still work in progress and currently supports the following features:
 * Convenience:
   * Minimize instructions panel
   * Minimize back view
+  * Colour helper
 
 Planned features:
 * Reset all values to defaults
@@ -27,7 +28,6 @@ Planned features:
 * PWA
 * Convenience:
   * Switch front/back
-  * Colour randomizer
 
 Not planned for now:
 * Set number of holes for each tablet individually

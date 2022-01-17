@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { tablets } from '../stores/stores.js';
+	import { tablets, patternColors } from '../stores/stores.js';
     import Tablet from "./Tablet.svelte";
+    
+    let showColors = false;
     
 	const addTablet = (event) => {
 		tablets.update(t => {
@@ -25,6 +27,17 @@
 			});
 		}
 	}
+	
+	const updateColor = (event, color) => {
+		$tablets = $tablets.map((tablet: Tablet) => {
+			tablet.threads = tablet.threads.map((thread) => {
+				thread.color = thread.color.replace(color, event.target.value);
+				return thread;
+			});
+			return tablet;
+		});
+	}
+	
 </script>
 
 <div class="uk-flex uk-flex-around uk-flex-wrap uk-flex-middle">
@@ -55,6 +68,24 @@
     		uk-tooltip="Brettchen entfernen"></button>
     </div>
 </div>
+<div class="uk-flex uk-flex-around uk-flex-wrap uk-flex-middle">
+	<div></div>
+	<div class="uk-flex uk-flex-center uk-flex-row uk-margin-small-top uk-flex-wrap uk-flex-wrap-around">
+		{#if showColors}
+			<div class="uk-width-1-1 uk-flex-auto">
+			    <a href="#" uk-icon="icon: chevron-down" on:click={() => showColors = false}>Farben anpassen</a>
+		    </div>
+        	{#each $patternColors as color, index (index)}
+        		<div>
+        			<input type="color" value={color} on:change={(e) => updateColor(e, color)} />
+        		</div>
+    		{/each}
+		{:else}
+			<a href="#" uk-icon="icon: chevron-right" on:click={() => showColors = true}>Farben anpassen</a>
+		{/if}
+	</div>
+	<div></div>
+</div>
 
 <style>
 	.holes {
@@ -69,5 +100,21 @@
 		background-color: white;
 		text-align: center;
 		border: 1px solid black;
+	}
+	
+	input {
+		border: 0;
+		padding: 0;
+		margin: 5px 10px 5px 0;
+		border: 1px solid black;
+		background-color: transparent;
+	}
+	input[type="color"]::-moz-color-swatch {
+		outline: none;
+		border: 0 transparent;
+	}
+	input[type="color"]::-webkit-color-swatch {
+		outline: none;
+		border: 0 transparent;
 	}
 </style>

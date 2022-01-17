@@ -2,7 +2,6 @@ import { writable, derived } from 'svelte/store';
 import type { Tablet } from '../model/tablet.type';
 import type { Thread } from '../model/thread.type';
 import type { Instruction } from '../model/instruction.type';
-import type { Weave } from '../model/weave.type';
 
 
 ///////////////////////////////////////////////////////////
@@ -75,7 +74,7 @@ export const urlHash = derived([initialized, weaveRows, tablets, rotationDirecti
 	}
 	const rotDirValue = [...Array($weaveRows).keys()].reduce((previousValue, _, index) => {
 		return [...Array($tablets.length).keys()].reduce((prev, _, idx) => {
-			const rotateBack = isRotateBack($rotationDirections[index], idx);
+			const rotateBack = typeof $rotationDirections[index] !== 'undefined' && $rotationDirections[index][idx] === true;
 			return `${prev}${(rotateBack ? '1' : '0')}`; 
 		}, previousValue);
 	}, '');
@@ -89,44 +88,11 @@ export const urlHash = derived([initialized, weaveRows, tablets, rotationDirecti
 	}
 });
 
-// Front pattern
-export const weavesFront = derived([weaveRows, tablets, rotationDirections], ([$weaveRows, $tablets, $rotationDirections]) => {
-	return $tablets.map((tablet: Tablet, tabletIndex: number) => generateWeaves($weaveRows, $rotationDirections, tablet, tabletIndex, 0, tablet.sDirection));
-});
-
-// Back pattern
-export const weavesBack = derived([weaveRows, tablets, rotationDirections], ([$weaveRows, $tablets, $rotationDirections]) => {
-	return $tablets.map((tablet: Tablet, tabletIndex: number) => generateWeaves($weaveRows, $rotationDirections, tablet, tabletIndex, 2, !tablet.sDirection));
-});
-
-function generateWeaves(weaveRows: number, rotationDirections: Instruction, tablet: Tablet, tabletIndex: number, colorIndex: number, direction: boolean): Weave[] {
-	const threads = tablet.threads;
-	const numberOfHoles = threads.length;
-	
-	let previousRotation = false;
-
-	return [...Array(weaveRows).keys()].map((i: number) => {
-		let offset = 1;
-		let tabletDirection = direction;
-		
-		const rotateBack = isRotateBack(rotationDirections[i], tabletIndex);
-		if (rotateBack) {
-			tabletDirection = !direction;
-			offset = -1;
-		}
-		if (previousRotation != rotateBack) {
-			offset = 0; 
-		}
-		colorIndex = (colorIndex + offset + threads.length) % numberOfHoles;
-		const weaveColor = threads[colorIndex].color;
-		previousRotation = rotateBack;
-		return {
-			color: weaveColor,
-			sDirection: tabletDirection
-		};
+// Colors
+export const patternColors = derived(tablets, ($tablets) => {
+	const colorList = $tablets.flatMap((tablet) => {
+		return tablet.threads.map((thread) => thread.color);
 	});
-}
+	return [... new Set(colorList)];
+});
 
-function isRotateBack(object: any, idx: number): boolean {
-	return typeof object !== 'undefined' && typeof object[idx] !== 'undefined' && object[idx] === true;
-}

@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { weavesFront, weavesBack, weaveRows, initStores, templates, appConfig } from './stores/stores.js';
+	import { weaveRows, initStores, templates, appConfig } from './stores/stores.js';
+	import { weavesFront, weavesBack } from './stores/weaves.js';
 	import { onMount } from 'svelte';
     import * as animateScroll from "svelte-scrollto";
     import NavBar from "./components/NavBar.svelte";

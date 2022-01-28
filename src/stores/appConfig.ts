@@ -4,7 +4,8 @@ import type { AppConfig } from '../model/appConfig.type';
 const initAppConfig: AppConfig = {
 	weaveSize: 3,
 	weaveBorderColor: '#AAAAAA',
-	weftColor: '#000000'
+	weftColor: '#000000',
+	weaveLength: 100
 };
 
 const storedAppConfig: AppConfig = localStorage.appConfig ? JSON.parse(localStorage.appConfig) : initAppConfig;

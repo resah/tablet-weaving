@@ -2,5 +2,6 @@
 export type AppConfig = {
 	weaveSize: number,
 	weaveBorderColor: string,
-	weftColor: string
+	weftColor: string,
+	weaveLength: number
 }

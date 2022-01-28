@@ -2,7 +2,7 @@ import { writable, derived } from 'svelte/store';
 import type { Tablet } from '../model/tablet.type';
 import type { Thread } from '../model/thread.type';
 import type { Instruction } from '../model/instruction.type';
-import type { Summary } from '../model/summary.type';
+import { appConfig } from './appConfig.js';
 
 
 ///////////////////////////////////////////////////////////
@@ -90,8 +90,8 @@ export const urlHash = derived([initialized, weaveRows, tablets, rotationDirecti
 });
 
 // Colors
-export const patternColors = derived(tablets, ($tablets) => {
-	const summary: Summary = {};
+const patternColors = derived(tablets, ($tablets) => {
+	const summary: {[key: string]: number} = {};
 	$tablets.forEach((tablet) => {
 		tablet.threads.forEach((thread) => {
 			if (typeof summary[thread.color] == 'undefined') {
@@ -103,6 +103,18 @@ export const patternColors = derived(tablets, ($tablets) => {
 	});
 	return Object.entries(summary).map(([key, value]) => { 
 		return { "color": key, "count": value };
+	});
+});
+
+export const weaveLength = derived([appConfig, patternColors], ([$appConfig, $patternColors]) => {
+	return $patternColors.map((colorCount) => {
+		const baseLength = colorCount.count * $appConfig.weaveLength;
+		return {
+			color: colorCount.color,
+			count: colorCount.count,
+			baseLength: baseLength,
+			fullLength: baseLength + baseLength * 0.2 + 50
+		};
 	});
 });
 

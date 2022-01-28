@@ -98,7 +98,7 @@
 		    </div>
 
 		    <!-- Third row -->
-		    <div class="uk-fley uk-flex-around uk-flex-top">
+		    <div class="uk-flex uk-flex-around uk-flex-top">
 			    <div class="uk-first-column"></div>
 			    <div class="uk-margin-small-top uk-text-center">
 			    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="plus" 

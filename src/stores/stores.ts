@@ -2,6 +2,7 @@ import { writable, derived } from 'svelte/store';
 import type { Tablet } from '../model/tablet.type';
 import type { Thread } from '../model/thread.type';
 import type { Instruction } from '../model/instruction.type';
+import type { Summary } from '../model/summary.type';
 
 
 ///////////////////////////////////////////////////////////
@@ -90,9 +91,18 @@ export const urlHash = derived([initialized, weaveRows, tablets, rotationDirecti
 
 // Colors
 export const patternColors = derived(tablets, ($tablets) => {
-	const colorList = $tablets.flatMap((tablet) => {
-		return tablet.threads.map((thread) => thread.color);
+	const summary: Summary = {};
+	$tablets.forEach((tablet) => {
+		tablet.threads.forEach((thread) => {
+			if (typeof summary[thread.color] == 'undefined') {
+				summary[thread.color] = 1;
+			} else {
+				summary[thread.color] = summary[thread.color] + 1;
+			}
+		});
 	});
-	return [... new Set(colorList)];
+	return Object.entries(summary).map(([key, value]) => { 
+		return { "color": key, "count": value };
+	});
 });
 

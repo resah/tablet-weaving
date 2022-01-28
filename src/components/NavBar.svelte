@@ -32,6 +32,10 @@
                     		Fadenumrisse:
                     		<input class="uk-input" type="color" bind:value={$appConfig.weaveBorderColor}/>
                     	</li>
+                    	<li>
+                			Schussfaden:
+		    				<input class="uk-input" type="color" bind:value={$appConfig.weftColor} />
+                    	</li>
                     </ul>
                 </div>
             </li>

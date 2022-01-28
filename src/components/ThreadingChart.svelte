@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { appConfig } from '../stores/appConfig.js';
 	import { tablets, patternColors } from '../stores/stores.js';
     import Tablet from "./Tablet.svelte";
     
@@ -73,15 +74,18 @@
 	<div class="uk-flex uk-flex-center uk-flex-row uk-margin-small-top uk-flex-wrap uk-flex-wrap-around">
 		{#if showColors}
 			<div class="uk-width-1-1 uk-flex-auto">
-			    <a href="#" uk-icon="icon: chevron-down" on:click={() => showColors = false}>Farben anpassen</a>
+			    <button type="button" class="uk-button uk-button-link" on:click={() => showColors = false}><span uk-icon="icon: chevron-down">Farbübersicht</button>
+		    </div>
+		    <div>
+		    	<input type="color" bind:value={$appConfig.weftColor} uk-tooltip="Schussfaden" class="weftColor" />
 		    </div>
         	{#each $patternColors as color, index (index)}
         		<div>
-        			<input type="color" value={color} on:change={(e) => updateColor(e, color)} />
+        			{ color.count } x <input type="color" uk-tooltip={color.color} value={color.color} on:change={(e) => updateColor(e, color.color)} />
         		</div>
     		{/each}
 		{:else}
-			<a href="#" uk-icon="icon: chevron-right" on:click={() => showColors = true}>Farben anpassen</a>
+			<button type="button" class="uk-button uk-button-link" on:click={() => showColors = true}><span uk-icon="icon: chevron-right">Farbübersicht</button>
 		{/if}
 	</div>
 	<div></div>
@@ -116,5 +120,8 @@
 	input[type="color"]::-webkit-color-swatch {
 		outline: none;
 		border: 0 transparent;
+	}
+	input.weftColor {
+		border: 4px solid #AAAAAA;
 	}
 </style>

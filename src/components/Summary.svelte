@@ -18,11 +18,11 @@
 <div class="uk-text-center">
 	{#if showColors}
     	<button type="button" class="uk-button uk-button-link" on:click={() => showColors = false}><span uk-icon="icon: chevron-down">Fadenübersicht</button>
-	    <table class="uk-table uk-table-small uk-table-divider uk-background-default">
+	    <table class="uk-table uk-table-small uk-table-divider uk-background-default yarnLengths">
 	    	<tr>
 	    		<td></td>
 	    		<td><input type="color" bind:value={$appConfig.weftColor} uk-tooltip="Schussfaden" class="weftColor" /><br></td>
-	        	{#each $weaveLength as wl, index (index)}
+	        	{#each $weaveLength.yarnLengths as wl, index (index)}
 	        		<td class="uk-text-right">
 	        			{ wl.count } x <input type="color" uk-tooltip={wl.color} value={wl.color} on:change={(e) => updateColor(e, wl.color)} />
 	        		</td>
@@ -31,19 +31,16 @@
 	    	<tr>
 	    		<td class="uk-text-left">Länge: <input class="uk-input uk-form-small uk-form-width-xsmall" type="text" bind:value={$appConfig.weaveLength} />cm</td>
 	    		<td></td>
-	        	{#each $weaveLength as wl, index (index)}
+	        	{#each $weaveLength.yarnLengths as wl, index (index)}
 	        		<td class="uk-text-right">{wl.yarnLength}</td>
 	    		{/each}
 	    	</tr>
+	    </table>
+	    <table class="uk-table uk-table-small uk-table-divider uk-background-default uk-text-left singleYarnLength">
 	    	<tr>
-	    		<td class="uk-text-left uk-text-meta">
-	    			Webzugabe: +20%<br>
-	    			Zugabe Brettchen: +50cm
-	    		</td>
-	    		<td></td>
-	        	{#each $weaveLength as wl, index (index)}
-	        		<td class="uk-text-right uk-text-meta"></td>
-	    		{/each}
+	    		<td class="uk-text-meta">Webzugabe: +20%</td>
+	    		<td class="uk-text-meta">Zugabe Brettchen: +50cm</td>
+	    		<td class="uk-text-meta uk-text-right">= {$weaveLength.singleYarnLength}cm / Faden</td>
 	    	</tr>
 	    </table>
 	{:else}
@@ -70,6 +67,15 @@
 		}
 		input.weftColor {
 			border: 4px solid #AAAAAA !important;
+		}
+		
+		.yarnLengths {
+			margin-bottom: 0;
+		}
+		.singleYarnLength,
+		.singleYarnLength td {
+			margin-top: 0;
+			padding-top: 0;
 		}
 	}
 </style>

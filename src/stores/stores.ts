@@ -107,8 +107,8 @@ const patternColors = derived(tablets, ($tablets) => {
 });
 
 export const weaveLength = derived([appConfig, patternColors], ([$appConfig, $patternColors]) => {
-	return $patternColors.map((colorCount) => {
-		const singleYarnLength: number = Number($appConfig.weaveLength) + Number($appConfig.weaveLength * 0.2) + 50;
+	const singleYarnLength: number = Number($appConfig.weaveLength) + Number($appConfig.weaveLength * 0.2) + 50;
+	const yarnLengths = $patternColors.map((colorCount) => {
 		const yarnLength: number = colorCount.count * singleYarnLength;
 		return {
 			color: colorCount.color,
@@ -116,5 +116,9 @@ export const weaveLength = derived([appConfig, patternColors], ([$appConfig, $pa
 			yarnLength: yarnLength
 		};
 	});
+	return {
+		singleYarnLength: singleYarnLength,
+		yarnLengths: yarnLengths
+	};
 });
 

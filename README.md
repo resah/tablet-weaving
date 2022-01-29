@@ -20,7 +20,6 @@ Still work in progress and currently supports the following features:
   * Colour helper
 
 Planned features:
-* Reset all values to defaults
 * Set number of holes for tablets
 * "Missed hole“ or "pebble weave" and selecting weft (thread) colour
 * Custom colour picker

@@ -29,30 +29,20 @@
 	    		{/each}
 	    	</tr>
 	    	<tr>
-	    		<td>Länge: <input class="uk-input uk-form-small uk-form-width-xsmall" type="text" bind:value={$appConfig.weaveLength} />cm</td>
+	    		<td class="uk-text-left">Länge: <input class="uk-input uk-form-small uk-form-width-xsmall" type="text" bind:value={$appConfig.weaveLength} />cm</td>
 	    		<td></td>
 	        	{#each $weaveLength as wl, index (index)}
-	        		<td class="uk-text-right">{wl.baseLength}</td>
+	        		<td class="uk-text-right">{wl.yarnLength}</td>
 	    		{/each}
 	    	</tr>
 	    	<tr>
 	    		<td class="uk-text-left uk-text-meta">
-	    			Webzugabe<br>
-	    			Zugabe Brettchen
+	    			Webzugabe: +20%<br>
+	    			Zugabe Brettchen: +50cm
 	    		</td>
 	    		<td></td>
 	        	{#each $weaveLength as wl, index (index)}
-	        		<td class="uk-text-right uk-text-meta">
-	        			+ 20%<br>
-	        			+ 50 cm
-	        		</td>
-	    		{/each}
-	    	</tr>
-	    	<tr>
-	    		<td></td>
-	    		<td></td>
-	        	{#each $weaveLength as wl, index (index)}
-	        		<td class="uk-text-right">{wl.fullLength} cm</td>
+	        		<td class="uk-text-right uk-text-meta"></td>
 	    		{/each}
 	    	</tr>
 	    </table>
@@ -62,22 +52,24 @@
 </div>
 
 <style>
-	input[type="color"] {
-		border: 0;
-		padding: 0;
-		margin: 5px 0px 5px 10;
-		border: 1px solid black;
-		background-color: transparent;
-	}
-	input[type="color"]::-moz-color-swatch {
-		outline: none;
-		border: 0 transparent;
-	}
-	input[type="color"]::-webkit-color-swatch {
-		outline: none;
-		border: 0 transparent;
-	}
-	input.weftColor {
-		border: 4px solid #AAAAAA;
+	@media all {
+		input[type="color"] {
+			border: 0;
+			padding: 0;
+			margin: 5px 0px 5px 10;
+			border: 1px solid black;
+			background-color: transparent;
+		}
+		input[type="color"]::-moz-color-swatch {
+			outline: none;
+			border: 0 transparent;
+		}
+		input[type="color"]::-webkit-color-swatch {
+			outline: none;
+			border: 0 transparent;
+		}
+		input.weftColor {
+			border: 4px solid #AAAAAA !important;
+		}
 	}
 </style>

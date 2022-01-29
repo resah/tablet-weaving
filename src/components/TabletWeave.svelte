@@ -20,16 +20,18 @@
 </div>
 
 <style>
-	.tablet {
-		float: left;
-	}
-	.tablet.weaveSize1 {
-		width: 8px;
-	}
-	.tablet.weaveSize2 {
-		width: 11px;
-	}
-	.tablet.weaveSize3 {
-		width: 14px;
+	@media all {
+		.tablet {
+			float: left;
+		}
+		.tablet.weaveSize1 {
+			width: 8px;
+		}
+		.tablet.weaveSize2 {
+			width: 11px;
+		}
+		.tablet.weaveSize3 {
+			width: 14px;
+		}
 	}
 </style>

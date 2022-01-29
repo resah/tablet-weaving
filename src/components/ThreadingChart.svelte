@@ -66,17 +66,25 @@
 </div>
 
 <style>
-	.holes {
-		margin-right: 2px;
-		max-width: 50px;
-		padding-top: 22px;
+	@media all {
+		.holes {
+			margin-right: 2px;
+			max-width: 50px;
+			padding-top: 22px;
+		}
+		.holeIndex {
+			height: 19px;
+			margin: 1px 0;
+			padding: 2px;
+			background-color: white !important;
+			text-align: center;
+			border: 1px solid black !important;
+		}
 	}
-	.holeIndex {
-		height: 19px;
-		margin: 1px 0;
-		padding: 2px;
-		background-color: white;
-		text-align: center;
-		border: 1px solid black;
+	
+	@media print {
+	    img, button {
+	      display: none;
+	    }
 	}
 </style>

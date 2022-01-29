@@ -22,26 +22,28 @@
 </div>
 
 <style>
-	.tabletWeaveIndices {
-		width: 25px;
-		text-align: right;
-		padding-right: 5px;
-		margin-top: -25px;
-	}
-	.weaveSize1 .tabletWeaveIndex {
-		height: 14px;
-		padding-top: 0;
-	}
-	.weaveSize2 .tabletWeaveIndex {
-		height: 24px;
-		padding-top: 0;
-	}
-	.weaveSize3 .tabletWeaveIndex {
-		height: 18px;
-		padding-top: 3.7px;
-	}
-	.weaveSize1 .even,
-	.weaveSize2 .even {
-		display: none;
+	@media all {
+		.tabletWeaveIndices {
+			width: 25px;
+			text-align: right;
+			padding-right: 5px;
+			margin-top: -25px;
+		}
+		.weaveSize1 .tabletWeaveIndex {
+			height: 14px;
+			padding-top: 0;
+		}
+		.weaveSize2 .tabletWeaveIndex {
+			height: 24px;
+			padding-top: 0;
+		}
+		.weaveSize3 .tabletWeaveIndex {
+			height: 18px;
+			padding-top: 3.7px;
+		}
+		.weaveSize1 .even,
+		.weaveSize2 .even {
+			display: none;
+		}
 	}
 </style>

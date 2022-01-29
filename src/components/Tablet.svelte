@@ -31,28 +31,30 @@
 </div>
 
 <style>
-	.tablet {
-		border: 1px solid black;
-		margin-right: 2px;
-		max-width: 30px;
-	}
-	.tabletIndex {
-		height: 20px;
-		background-color: white;
-		border-bottom: 1px solid black;
-	}
-	.threadDirection {
-		height: 25px;
-		background-color: lightgray;
-		border-top: 1px solid black;
-		text-align: center;
-	}
-	.threadDirection button {
-		padding: 0;
-		margin: 0;
-		border: 0;
-		background-color: lightgray;
-		height: 100%;
-		width: 100%;
+	@media all {
+		.tablet {
+			border: 1px solid black;
+			margin-right: 2px;
+			max-width: 30px;
+		}
+		.tabletIndex {
+			height: 20px;
+			background-color: white;
+			border-bottom: 1px solid black;
+		}
+		.threadDirection {
+			height: 25px;
+			background-color: lightgray;
+			border-top: 1px solid black;
+			text-align: center;
+		}
+		.threadDirection button {
+			padding: 0;
+			margin: 0;
+			border: 0;
+			background-color: lightgray;
+			height: 100%;
+			width: 100%;
+		}
 	}
 </style>

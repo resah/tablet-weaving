@@ -31,7 +31,7 @@
 <table>
 	<tr uk-sticky>
 		<th>
-			<button type="button" uk-icon="icon: trash; ratio: 0.7" on:click={resetDirections}></button>
+			<button class="resetDirections" type="button" uk-icon="icon: trash; ratio: 0.7" on:click={resetDirections}></button>
 		</th>
 		{#each $tablets as tablet, j (j)}
 			<th>{j + 1}</th>
@@ -52,40 +52,48 @@
 </table>
 
 <style>
-	table {
-		border: 1px solid black;
-		border-collapse: collapse;
+	@media all {
+		table {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		tr {
+			background-color: #FFFFFF;
+			padding: 0 1px;
+		}
+		th, td {
+			min-width: 12px;
+			height: 18.7px;
+			border: 1px solid #999999;
+			line-height: 1.3em;
+			font-size: 10px;
+			color: #333333;
+		}
+		th {
+			border-top: 0px;
+			border-left: 0px;
+		}
+		.cellLink {
+			display: block;
+			width: 100%;
+			height: 18px;
+			color: transparent !important;
+		}
+		.active {
+			background-color: #CCCCCC !important;
+		}
+		button {
+			display: inline;
+			border: 0;
+			background-color: transparent;
+			padding: 0;
+			margin: 0;
+		}
 	}
-	tr {
-		background-color: #FFFFFF;
-		padding: 0 1px;
-	}
-	th, td {
-		min-width: 12px;
-		height: 18.7px;
-		border: 1px solid #999999;
-		line-height: 1.3em;
-		font-size: 10px;
-		color: #333333;
-	}
-	th {
-		border-top: 0px;
-		border-left: 0px;
-	}
-	.cellLink {
-		display: block;
-		width: 100%;
-		height: 18px;
-		color: transparent;
-	}
-	.active {
-		background-color: #CCCCCC;
-	}
-	button {
-		display: inline;
-		border: 0;
-		background-color: transparent;
-		padding: 0;
-		margin: 0;
+	
+	@media print {
+		.resetDirections {
+			display: none;
+		}
 	}
 </style>

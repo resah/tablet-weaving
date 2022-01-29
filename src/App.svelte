@@ -29,14 +29,14 @@
 
 	<NavBar/>
 
-	<div class="uk-section uk-section-xsmall uk-section-muted">
+	<div class="uk-section uk-section-xsmall uk-section-muted threadingChart">
 		<div class="uk-container uk-container-small uk-container-expand">
 			<h2>Schärbrief</h2>
 			<ThreadingChart />
 		</div>
 	</div>
 
-	<div class="uk-section uk-section-xsmall">
+	<div class="uk-section uk-section-xsmall preview">
 		<div class="uk-container uk-container-small uk-container-expand">
 			
 			<!-- First row -->
@@ -122,5 +122,14 @@
 		overflow-x: scroll;
 		overflow-y: visible;
 		*/
+	}
+	
+	@media print {
+		button {
+			display: none;
+		}
+		.preview {
+			page-break-inside: avoid;
+		}
 	}
 </style>

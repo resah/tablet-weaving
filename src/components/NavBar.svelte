@@ -60,4 +60,10 @@
 	input {
 		border: 0;
 	}
+	
+	@media print {
+		.uk-navbar-container {
+			display: none;
+		}
+	}
 </style>

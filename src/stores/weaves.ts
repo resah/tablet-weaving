@@ -41,7 +41,3 @@ function generateWeaves(weaveRows: number, rotationDirections: Instruction, tabl
 		};
 	});
 }
-
-function isRotateBack(object: any, idx: number): boolean {
-	return typeof object !== 'undefined' && object[idx] === true;
-}

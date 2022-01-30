@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Thread from "./Thread.svelte";
+    import ChartThread from "./ChartThread.svelte";
     
     export let index: number;
     export let tablet: Tablet;
@@ -16,7 +16,7 @@
 	</div>
 	
 	{#each tablet.threads as thread, index (index)}
-		<Thread bind:thread/>
+		<ChartThread bind:thread/>
 	{/each}
 	
 	<div class="threadDirection">

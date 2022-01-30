@@ -4,10 +4,7 @@
 </script>
 
 <nav class="uk-navbar-container" uk-navbar>
-    <div class="uk-navbar-center">
-        Brettchenweben
-	</div>
-    <div class="uk-navbar-right">
+    <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
             <li>
                 <a href={'#'}>Vorlagen</a>
@@ -19,6 +16,13 @@
                     </ul>
                 </div>
             </li>
+        </ul>
+    </div>
+    <div class="uk-navbar-center">
+        Brettchenweben
+	</div>
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
             <li>
                 <a href={'#'}>Anzeige</a>
                 <div class="uk-navbar-dropdown">

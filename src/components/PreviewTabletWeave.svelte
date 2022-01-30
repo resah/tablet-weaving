@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { appConfig } from '../stores/appConfig.js';
-    import ThreadWeave from "./ThreadWeave.svelte";
+    import PreviewThreadWeave from "./PreviewThreadWeave.svelte";
 	import type { Weave } from '../model/weave.type';
     
     export let weaves: Weave[];
@@ -14,9 +14,9 @@
 
 <div class="tablet weaveSize{$appConfig.weaveSize}">
 	{#each weaves as weave, index (index)}
-		<ThreadWeave weave={weave} tabletIndex={tabletIndex} weaveRow={index} />
+		<PreviewThreadWeave weave={weave} tabletIndex={tabletIndex} weaveRow={index} />
 	{/each}
-	<ThreadWeave tabletIndex={tabletIndex} weaveRow={weaves.length} weave={final} classNames="final"/>
+	<PreviewThreadWeave tabletIndex={tabletIndex} weaveRow={weaves.length} weave={final} classNames="final"/>
 </div>
 
 <style>

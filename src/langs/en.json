@@ -1,0 +1,55 @@
+{
+  "lang": "English",
+  "navbar": {
+    "title": "Tablet Weaving",
+    "templates": "Templates",
+    "display": "Display",
+    "preview": {
+    	"weave": "Preview weave",
+    	"size": "Size",
+    	"outline": "Thread outline",
+    	"weft": "Weft"
+    }
+  },
+  "chart": {
+  	"title": "Threading Chart",
+  	"tablet": {
+  		"holes": "Tablet hole index description: A = top front; B - bottom front; C - bottom back; D - top back",
+  		"add": "Add tablet",
+  		"remove": "Remove tablet",
+  		"index": "Tablet #{index}",
+  		"switch": "Invert tablet slant",
+  		"color": "Choose colour"
+  	},
+  	"summary": {
+  		"title": "Threading overview",
+  		"weft": "Weft thread",
+  		"length": "Length",
+  		"weaveAllowance": "Weave allowance",
+  		"tabletAllowance": "Tablet allowance",
+  		"perThread": "/ thread"
+  	}
+  },
+  "preview": {
+  	"patternDevelopment": {
+  		"title": "Pattern Development",
+  		"show": "Show pattern development",
+  		"hide": "Hide pattern development",
+  		"reset": "Reset all tablet rotation directions",
+  		"switchAll": "Invert tablet rotation directions for this row",
+  		"index": "{column}, {row}"
+	},
+	"front": {
+	  	"title": "Front Weave"
+	},
+	"back": {
+	  	"title": "Back Weave",
+	  	"show": "Show back",
+	  	"hide": "Hide back"
+	},
+	"rows": {
+	  	"add": "Add weave row",
+	  	"remove": "Remove weave row"
+	}
+  }
+}

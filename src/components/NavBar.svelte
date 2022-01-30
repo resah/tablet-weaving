@@ -1,13 +1,18 @@
 <script lang="ts">
+    import { _, locale, locales } from "svelte-i18n";
 	import { appConfig } from '../stores/appConfig.js';
 	import { templates } from '../stores/patternTemplates.js';
+	
+    const handleLocaleChange = (selectedLocale) => {
+	    locale.set(selectedLocale);
+    };
 </script>
 
 <nav class="uk-navbar-container" uk-navbar>
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
             <li>
-                <a href={'#'}>Vorlagen</a>
+                <a href={'#'}>{$_('navbar.templates')}</a>
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                     	{#each $templates as template, index (index)}
@@ -19,29 +24,36 @@
         </ul>
     </div>
     <div class="uk-navbar-center">
-        Brettchenweben
+        {$_('navbar.title')}
 	</div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             <li>
-                <a href={'#'}>Anzeige</a>
+                <a href={'#'}>{$_('navbar.display')}</a>
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                    	<li class="uk-nav-header">Vorschau Gewebe</li>
+                    	<li class="uk-nav-header">{$_('navbar.preview.weave')}</li>
                         <li>
-                        	Größe:
+                        	{$_('navbar.preview.size')}:
                         	<input class="uk-range" type="range" min="1" max="3" step="1" bind:value={$appConfig.weaveSize} />
                     	</li>
                     	<li>
-                    		Fadenumrisse:
+                    		{$_('navbar.preview.outline')}:
                     		<input class="uk-input" type="color" bind:value={$appConfig.weaveBorderColor}/>
                     	</li>
                     	<li>
-                			Schussfaden:
+                			{$_('navbar.preview.weft')}:
 		    				<input class="uk-input" type="color" bind:value={$appConfig.weftColor} />
                     	</li>
                     </ul>
                 </div>
+            </li>
+        	<li>
+				{#each $locales as l}
+	        		{#if $locale != l}
+	        			<a href={'#'} uk-icon="icon: world" on:click={() => handleLocaleChange(l)}>{$_('lang', { locale: l })}</a>
+	        		{/if}
+				{/each}
             </li>
             <li>
             	<a href="https://www.youtube.com/watch?v=zJmZp41ZnEk" target="blank">

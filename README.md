@@ -21,12 +21,10 @@ Still work in progress and currently supports the following features:
 
 Planned features:
 * Set number of holes for tablets
-* "Missed hole“ or "pebble weave" and selecting weft (thread) colour
-* Custom colour picker
+* "Missed hole“ or "pebble weave"
+* Custom colour picker (maybe selectable from different versions)
 * Inverted view (bottom-up, which seems to be used more often)
 * PWA
-* Convenience:
-  * Switch front/back
 
 Not planned for now:
 * Set number of holes for each tablet individually

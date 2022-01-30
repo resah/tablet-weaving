@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
 	import { weaveRows, templates, appConfig } from '../stores/stores.js';
 	import { weavesFront, weavesBack } from '../stores/weaves.js';
     import PreviewInstructions from "./PreviewInstructions.svelte";
@@ -27,27 +28,29 @@
 				    <li hidden={!hiddenInstructions}>
 				    	<button type="button"
 				    		uk-icon="icon: thumbnails"
-				    		uk-tooltip="Webbrief anzeigen"  
+				    		uk-tooltip={$_('preview.patternDevelopment.show')}
 				    		on:click={() => hiddenInstructions = false}></button>
 			    	</li>
 				</ul>
 			</div>
 		    <div class="uk-first-column uk-text-center" hidden={hiddenInstructions}>
 		    	<h3>
-		    		Webbrief 
+		    		{$_('preview.patternDevelopment.title')} 
 		    		<button type="button"
 		    			class="uk-button uk-button-link" 
+			    		uk-tooltip={$_('preview.patternDevelopment.hide')}
 		    			on:click={() => hiddenInstructions = true}><span class="uk-margin-small-right" uk-icon="shrink"></span></button>
 	    		</h3>
 		    </div>
 		    <div class="uk-text-center uk-margin-small-bottom">
-		    	<h3>Vorderseite</h3>
+		    	<h3>{$_('preview.front.title')}</h3>
 		    </div>
 		    <div class="uk-text-center" hidden={hiddenWeaveBack}>
 		    	<h3>
-		    		Rückseite
+		    		{$_('preview.back.title')}
 		    		<button type="button"
 		    			class="uk-button uk-button-link" 
+			    		uk-tooltip={$_('preview.back.hide')} 
 		    			on:click={() => hiddenWeaveBack = true}><span class="uk-margin-small-right" uk-icon="shrink"></span></button>
 	    		</h3>
 		    </div>
@@ -56,7 +59,7 @@
 				    <li hidden={!hiddenWeaveBack}>
 				    	<button type="button"
 				    		uk-icon="icon: grid"
-				    		uk-tooltip="Rückseite des Webbandes anzeigen" 
+				    		uk-tooltip={$_('preview.back.show')}
 				    		on:click={() => hiddenWeaveBack = false}></button>
 			    	</li>
 				</ul>
@@ -84,10 +87,10 @@
 		    <div class="uk-margin-small-top uk-text-center">
 		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="plus" 
 		    		on:click|preventDefault={addWeaveRow}
-		    		uk-tooltip="Webreihe hinzufügen"></button>
+		    		uk-tooltip={$_('preview.rows.add')}></button>
 		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="minus" 
 		    		on:click|preventDefault={removeWeaveRow}
-		    		uk-tooltip="Webreihe entfernen"></button>
+		    		uk-tooltip={$_('preview.rows.remove')}></button>
 		    </div>
 		    <div></div>
 	    </div>

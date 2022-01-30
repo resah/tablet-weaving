@@ -1,0 +1,55 @@
+{
+  "lang": "Deutsch",
+  "navbar": {
+    "title": "Brettchenweben",
+    "templates": "Vorlagen",
+    "display": "Anzeige",
+    "preview": {
+    	"weave": "Vorschau Gewebe",
+    	"size": "Größe",
+    	"outline": "Fadenumrisse",
+    	"weft": "Schussfaden"
+    }
+  },
+  "chart": {
+  	"title": "Schärbrief",
+  	"tablet": {
+  		"holes": "Brettchen-Löcher: A = oben vorne; B - unten vorne; C - unten hinten; D - oben hinten",
+  		"add": "Brettchen hinzufügen",
+  		"remove": "Brettchen entfernen",
+  		"index": "Brettchen #{index}",
+  		"switch": "Schärung umkehren",
+  		"color": "Farbe wählen"
+  	},
+  	"summary": {
+  		"title": "Fadenübersicht",
+  		"weft": "Schussfaden",
+  		"length": "Länge",
+  		"weaveAllowance": "Webzugabe",
+  		"tabletAllowance": "Zugabe Brettchen",
+  		"perThread": "/ Faden"
+  	}
+  },
+  "preview": {
+  	"patternDevelopment": {
+  		"title": "Webbrief",
+  		"show": "Webbrief anzeigen",
+  		"hide": "Webbrief ausblenden",
+  		"reset": "Alle Drehrichtungen zurücksetzen",
+  		"switchAll": "Drehrichtung für diese Reihe umkehren",
+  		"index": "{column}, {row}"
+	},
+	"front": {
+	  	"title": "Vorderseite"
+	},
+	"back": {
+	  	"title": "Rückseite",
+	  	"show": "Rückseite des Webbandes anzeigen",
+	  	"hide": "Rückseite ausblenden"
+	},
+	"rows": {
+	  	"add": "Webreihe hinzufügen",
+	  	"remove": "Webreihe entfernen"
+	}
+  }
+}

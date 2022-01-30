@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
 	import { tablets } from '../stores/stores.js';
     import ChartSummary from "./ChartSummary.svelte";
     import ChartTablet from "./ChartTablet.svelte";
@@ -33,11 +34,13 @@
 
 <div class="uk-section uk-section-xsmall uk-section-muted threadingChart">
 	<div class="uk-container uk-container-small uk-container-expand">
-		<h2>Schärbrief</h2>
+		<h2>{$_('chart.title')}</h2>
 		
 		<div class="uk-flex uk-flex-around uk-flex-wrap uk-flex-middle">
 			<div>
-				<img src="assets/tablet-4-holes.svg" alt="Tablet hole index description: A = top front; B - bottom front; C - bottom back; D - top back"/>
+				<img src="assets/tablet-4-holes.svg"
+					alt={$_('chart.tablet.holes')}
+					uk-tooltip={$_('chart.tablet.holes')} />
 			</div>
 		    
 			<div class="uk-flex uk-flex-center uk-flex-row uk-flex-auto">
@@ -57,10 +60,10 @@
 		    <div>
 		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom " uk-icon="plus" 
 		    		on:click|preventDefault={addTablet}
-		    		uk-tooltip="Brettchen hinzufügen"></button><br>
+		    		uk-tooltip={$_('chart.tablet.add')}></button><br>
 		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small" uk-icon="minus" 
 		    		on:click|preventDefault={removeTablet}
-		    		uk-tooltip="Brettchen entfernen"></button>
+		    		uk-tooltip={$_('chart.tablet.remove')}></button>
 		    </div>
 		</div>
 

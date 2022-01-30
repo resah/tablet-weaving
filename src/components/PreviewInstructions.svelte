@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { _ } from "svelte-i18n";
 	import { tablets, weaveRows, rotationDirections } from '../stores/stores.js';
 	
 	$: isActive = (i, j) => {
@@ -31,7 +32,10 @@
 <table>
 	<tr uk-sticky>
 		<th>
-			<button class="resetDirections" type="button" uk-icon="icon: trash; ratio: 0.7" on:click={resetDirections}></button>
+			<button class="resetDirections" type="button" 
+				on:click={resetDirections}
+				uk-icon="icon: trash; ratio: 0.7" 
+				uk-tooltip={$_('preview.patternDevelopment.reset')}></button>
 		</th>
 		{#each $tablets as tablet, j (j)}
 			<th>{j + 1}</th>
@@ -40,11 +44,13 @@
 	{#each [...Array($weaveRows).keys()] as row, i (i)}
 		<tr>
 			<th class="uk-text-right">
-				<button type="button" on:click={() => changeDirectionForRow(i)} uk-tooltip="Drehrichtung für alle Brettchen umkehren">{i + 1}</button>
+				<button type="button" on:click={() => changeDirectionForRow(i)}
+					uk-tooltip={$_('preview.patternDevelopment.switchAll')}>{i + 1}</button>
 			</th>
 			{#each $tablets as tablet, j (j)}
 				<td class="{isActive(i, j) ? 'active' : ''}">
-					<button type="button" class="cellLink" on:click={() => changeDirectionForCell(i, j)} uk-tooltip="{j + 1}, {i + 1}">x</button>
+					<button type="button" class="cellLink" on:click={() => changeDirectionForCell(i, j)}
+						uk-tooltip={$_('preview.patternDevelopment.index', { values: { column: (j+1), row: (i+1) } })} >&nbsp;</button>
 				</td>
 			{/each}
 		</tr>

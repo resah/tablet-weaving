@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
     import ChartThread from "./ChartThread.svelte";
     
     export let index: number;
@@ -11,7 +12,7 @@
 </script>
 
 <div class="tablet uk-flex-auto">
-	<div class="tabletIndex uk-text-center" uk-tooltip="Brettchen #{index + 1}">
+	<div class="tabletIndex uk-text-center" uk-tooltip={$_("chart.tablet.index", { values: { index: index + 1 } })} >
 		{#if index < 9}&nbsp;{/if}{index + 1}
 	</div>
 	
@@ -20,7 +21,7 @@
 	{/each}
 	
 	<div class="threadDirection">
-		<button on:click={toggleDirection} uk-tooltip="Schärung umkehren">
+		<button on:click={toggleDirection} uk-tooltip={$_("chart.tablet.switch")} >
 			{#if tablet.sDirection}
 			  S
 			{:else}

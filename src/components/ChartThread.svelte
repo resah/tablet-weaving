@@ -1,9 +1,10 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
 	export let thread: Thread;
 </script>
 
 <div class="thread" 
-	uk-tooltip="Farbe wählen"
+	uk-tooltip={$_("chart.tablet.color")}
 	style="--backgroundColor: {thread.color}">
 	<input type="color" bind:value={thread.color} />
 </div>

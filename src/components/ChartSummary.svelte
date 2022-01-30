@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
 	import { appConfig } from '../stores/appConfig.js';
 	import { tablets, weaveLength } from '../stores/stores.js';
     
@@ -19,11 +20,13 @@
 	<div></div>
 	<div class="uk-text-center">
 		{#if showColors}
-	    	<button type="button" class="uk-button uk-button-link" on:click={() => showColors = false}><span uk-icon="icon: chevron-down">Fadenübersicht</button>
+	    	<button type="button" class="uk-button uk-button-link" on:click={() => showColors = false}>
+	    		<span uk-icon="icon: chevron-down">{$_('chart.summary.title')}
+    		</button>
 		    <table class="uk-table uk-table-small uk-table-divider uk-background-default yarnLengths">
 		    	<tr>
 		    		<td></td>
-		    		<td><input type="color" bind:value={$appConfig.weftColor} uk-tooltip="Schussfaden" class="weftColor" /><br></td>
+		    		<td><input type="color" bind:value={$appConfig.weftColor} uk-tooltip={$_('chart.summary.weft')} class="weftColor" /><br></td>
 		        	{#each $weaveLength.yarnLengths as wl, index (index)}
 		        		<td class="uk-text-right">
 		        			{ wl.count } x <input type="color" uk-tooltip={wl.color} value={wl.color} on:change={(e) => updateColor(e, wl.color)} />
@@ -31,7 +34,9 @@
 		    		{/each}
 		    	</tr>
 		    	<tr>
-		    		<td class="uk-text-left">Länge: <input class="uk-input uk-form-small uk-form-width-xsmall" type="text" bind:value={$appConfig.weaveLength} />cm</td>
+		    		<td class="uk-text-left">{
+		    			$_('chart.summary.length')}: <input class="uk-input uk-form-small uk-form-width-xsmall" type="text" bind:value={$appConfig.weaveLength} />cm
+	    			</td>
 		    		<td></td>
 		        	{#each $weaveLength.yarnLengths as wl, index (index)}
 		        		<td class="uk-text-right">{wl.yarnLength}</td>
@@ -40,13 +45,15 @@
 		    </table>
 		    <table class="uk-table uk-table-small uk-table-divider uk-background-default uk-text-left singleYarnLength">
 		    	<tr>
-		    		<td class="uk-text-meta">Webzugabe: +20%</td>
-		    		<td class="uk-text-meta">Zugabe Brettchen: +50cm</td>
-		    		<td class="uk-text-meta uk-text-right">= {$weaveLength.singleYarnLength}cm / Faden</td>
+		    		<td class="uk-text-meta">{$_('chart.summary.weaveAllowance')}: +20%</td>
+		    		<td class="uk-text-meta">{$_('chart.summary.tabletAllowance')}: +50cm</td>
+		    		<td class="uk-text-meta uk-text-right">= {$weaveLength.singleYarnLength}cm {$_('chart.summary.perThread')}</td>
 		    	</tr>
 		    </table>
 		{:else}
-			<button type="button" class="uk-button uk-button-link" on:click={() => showColors = true}><span uk-icon="icon: chevron-right">Fadenübersicht</button>
+			<button type="button" class="uk-button uk-button-link" on:click={() => showColors = true}>
+				<span uk-icon="icon: chevron-right">{$_('chart.summary.title')}
+			</button>
 		{/if}
 	</div>
 	<div></div>

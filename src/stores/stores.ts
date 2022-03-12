@@ -1,8 +1,9 @@
 import { writable, derived } from 'svelte/store';
-import type { Tablet } from '../model/tablet.type';
-import type { Thread } from '../model/thread.type';
 import type { Instruction } from '../model/instruction.type';
 import { appConfig } from './appConfig.js';
+import { ColorIndex } from '../model/ColorIndex';
+import { Tablet } from '../model/Tablet';
+import { Thread } from '../model/Thread';
 
 
 ///////////////////////////////////////////////////////////
@@ -10,10 +11,10 @@ import { appConfig } from './appConfig.js';
 ///////////////////////////////////////////////////////////
 
 const initTablets: Tablet[] = [
-	{ sDirection: true, holes: 4, threads: [{color: "#204a87" }, { color: "#204a87" }, { color: "#204a87" }, {color: "#204a87" }] }, 
-	{ sDirection: true, holes: 4, threads: [{color: "#ffffff" }, { color: "#d3d7cf" }, { color: "#ffffff" }, {color: "#ffffff" }] },
-	{ sDirection: true, holes: 4, threads: [{color: "#ffffff" }, { color: "#d3d7cf" }, { color: "#ffffff" }, {color: "#ffffff" }] },
-	{ sDirection: true, holes: 4, threads: [{color: "#204a87" }, { color: "#204a87" }, { color: "#204a87" }, {color: "#204a87" }] }
+	new Tablet(true, 4, [new Thread("#204a87"), new Thread("#204a87"), new Thread("#204a87"), new Thread("#204a87")]), 
+	new Tablet(true, 4, [new Thread("#ffffff"), new Thread("#d3d7cf"), new Thread("#ffffff"), new Thread("#ffffff")]),
+	new Tablet(true, 4, [new Thread("#ffffff"), new Thread("#d3d7cf"), new Thread("#ffffff"), new Thread("#ffffff")]),
+	new Tablet(true, 4, [new Thread("#204a87"), new Thread("#204a87"), new Thread("#204a87"), new Thread("#204a87")])
 ];
 
 const storedWeaveRows: number = localStorage.weaveRows ? parseInt(localStorage.weaveRows) : 19;
@@ -30,7 +31,7 @@ tablets.subscribe((value: Tablet[]) => localStorage.tablets = JSON.stringify(val
 rotationDirections.subscribe((value: Instruction) => localStorage.rotationDirections = JSON.stringify(value));
 
 export function initStores(): void {
-	const parts = atob(window.location.hash.substring(1)).split(':');
+	const parts = window.atob(window.location.hash.substring(1)).split(':');
 	if (parts.length !== 4) {
 		initialized.set(true);
 		return;
@@ -85,11 +86,11 @@ export const urlHash = derived([initialized, weaveRows, tablets, rotationDirecti
 	return `${$tablets.length}:${$weaveRows}:${rotDirValue}:${colors}`;
 }).subscribe((value: string) => {
 	if (value) {
-		window.location.hash = "#" + btoa(value);
+		window.location.hash = "#" + window.btoa(value);
 	}
 });
 
-// Colors
+// Colors index
 const patternColors = derived(tablets, ($tablets) => {
 	const summary: {[key: string]: number} = {};
 	$tablets.forEach((tablet) => {
@@ -101,11 +102,10 @@ const patternColors = derived(tablets, ($tablets) => {
 			}
 		});
 	});
-	return Object.entries(summary).map(([key, value]) => { 
-		return { "color": key, "count": value };
-	});
+	return Object.entries(summary).map(([key, value]) => new ColorIndex(key, value));
 });
 
+// Calculation of length of each thread and total length of yarn for each color
 export const weaveLength = derived([appConfig, patternColors], ([$appConfig, $patternColors]) => {
 	const singleYarnLength: number = Number($appConfig.weaveLength) + Number($appConfig.weaveLength * 0.2) + 50;
 	const yarnLengths = $patternColors.map((colorCount) => {

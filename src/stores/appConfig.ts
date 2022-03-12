@@ -1,14 +1,7 @@
 import { writable } from 'svelte/store';
-import type { AppConfig } from '../model/appConfig.type';
+import { AppConfig } from '../model/AppConfig';
 
-const initAppConfig: AppConfig = {
-	weaveSize: 3,
-	weaveBorderColor: '#AAAAAA',
-	weftColor: '#000000',
-	weaveLength: 100
-};
-
-const storedAppConfig: AppConfig = localStorage.appConfig ? JSON.parse(localStorage.appConfig) : initAppConfig;
+const storedAppConfig: AppConfig = localStorage.appConfig ? JSON.parse(localStorage.appConfig) : new AppConfig();
 
 export const appConfig = writable<AppConfig>(storedAppConfig);
 

@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { _ } from "svelte-i18n";
-    import ChartThread from "./ChartThread.svelte";
+    import { _ } from 'svelte-i18n';
+    import type { Tablet } from '../model/Tablet';
+    import ChartThread from './ChartThread.svelte';
     
     export let index: number;
     export let tablet: Tablet;

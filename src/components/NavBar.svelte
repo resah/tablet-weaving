@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { _, locale, locales } from "svelte-i18n";
+    import { _, locale, locales } from 'svelte-i18n';
 	import { appConfig } from '../stores/appConfig.js';
 	import { templates } from '../stores/patternTemplates.js';
 	
-    const handleLocaleChange = (selectedLocale) => {
+    const handleLocaleChange = (selectedLocale: string) => {
 	    locale.set(selectedLocale);
     };
 </script>

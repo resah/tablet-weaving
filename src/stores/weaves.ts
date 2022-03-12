@@ -1,8 +1,8 @@
 import { derived } from 'svelte/store';
 import { weaveRows, tablets, rotationDirections } from './stores.js';
-import type { Tablet } from '../model/tablet.type';
+import type { Tablet } from '../model/Tablet';
 import type { Instruction } from '../model/instruction.type';
-import type { Weave } from '../model/weave.type';
+import { Weave } from '../model/Weave';
 
 // Front pattern
 export const weavesFront = derived([weaveRows, tablets, rotationDirections], ([$weaveRows, $tablets, $rotationDirections]) => {
@@ -35,9 +35,7 @@ function generateWeaves(weaveRows: number, rotationDirections: Instruction, tabl
 		colorIndex = (colorIndex + offset + threads.length) % numberOfHoles;
 		const weaveColor = threads[colorIndex].color;
 		previousRotation = rotateBack;
-		return {
-			color: weaveColor,
-			sDirection: tabletDirection
-		};
+		
+		return new Weave(weaveColor, tabletDirection);
 	});
 }

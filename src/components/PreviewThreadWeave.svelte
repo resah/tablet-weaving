@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { appConfig } from '../stores/appConfig.js';
-	import type { Weave } from '../model/weave.type';
+	import type { Weave } from '../model/Weave';
 
 	export let tabletIndex: number;
 	export let weaveRow: number;

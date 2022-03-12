@@ -1,19 +1,20 @@
 <script lang="ts">
-    import { _ } from "svelte-i18n";
-	import { weaveRows, templates, appConfig } from '../stores/stores.js';
+    import * as animateScroll from 'svelte-scrollto';
+    import { _ } from 'svelte-i18n';
+	import { weaveRows } from '../stores/stores.js';
 	import { weavesFront, weavesBack } from '../stores/weaves.js';
-    import PreviewInstructions from "./PreviewInstructions.svelte";
-    import PreviewWeave from "./PreviewWeave.svelte";
+    import PreviewInstructions from './PreviewInstructions.svelte';
+    import PreviewWeave from './PreviewWeave.svelte';
     
     let hiddenInstructions = false;
     let hiddenWeaveBack = false;
 	
-	const addWeaveRow = (event) => {
+	const addWeaveRow = () => {
 		$weaveRows = $weaveRows + 1;
 		animateScroll.scrollToBottom();
 	}
 	
-	const removeWeaveRow = (event) => {
+	const removeWeaveRow = () => {
 		$weaveRows = $weaveRows - 1;
 	}
 </script>

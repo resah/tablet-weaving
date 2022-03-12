@@ -20,8 +20,10 @@ Still work in progress and currently supports the following features:
   * Colour helper
 
 Planned features:
-* Set number of holes for tablets
+* Start screen with template selection
+* Template selection from modal (instead menu)
 * "Missed hole“ or "pebble weave"
+* Set number of holes for tablets
 * Custom colour picker (maybe selectable from different versions)
 * Inverted view (bottom-up, which seems to be used more often)
 * PWA

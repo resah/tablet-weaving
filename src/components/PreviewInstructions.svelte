@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { _ } from "svelte-i18n";
+	import { _ } from 'svelte-i18n';
 	import { tablets, weaveRows, rotationDirections } from '../stores/stores.js';
 	
-	$: isActive = (i, j) => {
+	$: isActive = (i: number, j: number) => {
 		return (typeof $rotationDirections[i] !== 'undefined') && (typeof $rotationDirections[i][j] !== 'undefined') && ($rotationDirections[i][j] === true);
 	};
 	
@@ -37,7 +37,7 @@
 				uk-icon="icon: trash; ratio: 0.7" 
 				uk-tooltip={$_('preview.patternDevelopment.reset')}></button>
 		</th>
-		{#each $tablets as tablet, j (j)}
+		{#each $tablets as _, j (j)}
 			<th>{j + 1}</th>
 		{/each}
 	</tr>

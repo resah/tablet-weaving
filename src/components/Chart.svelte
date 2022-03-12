@@ -1,12 +1,11 @@
 <script lang="ts">
-    import { _ } from "svelte-i18n";
+    import { _ } from 'svelte-i18n';
 	import { tablets } from '../stores/stores.js';
-    import ChartSummary from "./ChartSummary.svelte";
-    import ChartTablet from "./ChartTablet.svelte";
+    import type { Tablet } from '../model/Tablet';
+    import ChartSummary from './ChartSummary.svelte';
+    import ChartTablet from './ChartTablet.svelte';
     
-    let showColors = false;
-    
-	const addTablet = (event) => {
+	const addTablet = () => {
 		tablets.update(t => {
 			const lastTablet = t[t.length - 1];
 			const newTablet: Tablet = {
@@ -21,7 +20,7 @@
 		});
 	}
 	
-	const removeTablet = (event) => {
+	const removeTablet = () => {
 		if ($tablets.length > 1) {
 			tablets.update(t => {
 				t.pop();
@@ -45,7 +44,7 @@
 		    
 			<div class="uk-flex uk-flex-center uk-flex-row uk-flex-auto">
 		    	<div class="holes uk-flex-auto">
-		        	{#each $tablets[0].threads as holes, index (index)}
+		        	{#each $tablets[0].threads as _, index (index)}
 		        		<div class="holeIndex">
 		        			{String.fromCharCode(65 + index)}
 		        		</div>

@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { appConfig } from '../stores/appConfig.js';
 	import { weaveRows } from '../stores/stores.js';
-    import PreviewTabletWeave from "./PreviewTabletWeave.svelte";
-	import type { Weave } from '../model/weave.type';
+	import type { Weave } from '../model/Weave';
+    import PreviewTabletWeave from './PreviewTabletWeave.svelte';
     
     export let weavePattern: Weave[][];
 </script>
 
 <div class="uk-flex uk-flex-center">
 	<div class="tabletWeaveIndices weaveSize{$appConfig.weaveSize} uk-text-small">
-    	{#each [...Array($weaveRows).keys()] as key, index (index)}
+    	{#each [...Array($weaveRows).keys()] as _, index (index)}
     		<div class="tabletWeaveIndex {index % 2 ? 'even' : 'odd'}">
     			{index + 1}
     		</div>

@@ -1,11 +1,12 @@
 <script lang="ts">
-    import { _ } from "svelte-i18n";
-	import { appConfig } from '../stores/appConfig.js';
+    import { _ } from 'svelte-i18n';
+	import { appConfig } from '../stores/appConfig';
 	import { tablets, weaveLength } from '../stores/stores.js';
+    import type { Tablet } from '../model/Tablet';
     
     let showColors = false;
     
-	const updateColor = (event, color) => {
+	const updateColor = (event: any, color: string) => {
 		$tablets = $tablets.map((tablet: Tablet) => {
 			tablet.threads = tablet.threads.map((thread) => {
 				thread.color = thread.color.replace(color, event.target.value);

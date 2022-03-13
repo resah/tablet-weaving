@@ -1,4 +1,4 @@
-# Tablet waving pattern helper
+# Tablet weaving pattern helper
 
 A small tool to create a preview and instructions for a custom tablet weaving pattern: https://resah.github.io/tablet-weaving/
 
@@ -21,9 +21,9 @@ Still work in progress.
   * Minimize back view
   * Colour helper
 
-
 ### Planned features
 
+* Display last build date and version number
 * Start screen with template selection
 * Template selection from modal (instead menu)
 * Lock direction switches for columns (to allow easier outer supporting weaves)

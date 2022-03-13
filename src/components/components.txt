@@ -1,0 +1,66 @@
+ ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+ │NavBar                                                                                       │
+ │                                                                                             │
+ ├─────────────────────────────────────────────────────────────────────────────────────────────┤
+ │Chart                                                                                        │
+ │                    ┌──────┬──────┬──────┬──────┬──────┬──────┐                              │
+ │                    │Chart │Chart │Chart │Chart │Chart │Chart │ ...                          │
+ │                    │Tablet│Tablet│Tablet│Tablet│Tablet│Tablet│                              │
+ │                    │      │      │      │      │      │      │                              │
+ │                    ├──────┼──────┼──────┼──────┼──────┼──────┤              ┌─────────────┐ │
+ │                    │Chart │Chart │Chart │Chart │Chart │Chart │              │             │ │
+ │                    │Thread│Thread│Thread│Thread│Thread│Thread│              │      +      │ │
+ │                    ├──────┼──────┼──────┼──────┼──────┼──────┤              │             │ │
+ │                    │Chart │Chart │Chart │Chart │Chart │Chart │              └─────────────┘ │
+ │                    │Thread│Thread│Thread│Thread│Thread│Thread│                              │
+ │                    ├──────┼──────┼──────┼──────┼──────┼──────┤              ┌─────────────┐ │
+ │                    │Chart │Chart │Chart │Chart │Chart │Chart │              │             │ │
+ │                    │Thread│Thread│Thread│Thread│Thread│Thread│              │      -      │ │
+ │                    ├──────┼──────┼──────┼──────┼──────┼──────┤              │             │ │
+ │                    │Chart │Chart │Chart │Chart │Chart │Chart │              └─────────────┘ │
+ │                    │Thread│Thread│Thread│Thread│Thread│Thread│                              │
+ │                    └──────┴──────┴──────┴──────┴──────┴──────┘                              │
+ │                                                                                             │
+ │                    ┌─────────────────────────────────────────┐                              │
+ │                    │ChartSummary                             │                              │
+ │                    │                                         │                              │
+ │                    └─────────────────────────────────────────┘                              │
+ │                                                                                             │
+ ├─────────────────────────────────────────────────────────────────────────────────────────────┤
+ │Preview                                                                                      │
+ │  ┌────────────────────┐ ┌───────────────────────────────┐ ┌───────────────────────────────┐ │
+ │  │PreviewInstructions │ │PreviewWeave                   │ │PreviewWeave                   │ │
+ │  │                    │ │                               │ │                               │ │
+ │  │                    │ │ ┌───────┬───────┬───────┐     │ │ ┌───────┬───────┬───────┐     │ │
+ │  │                    │ │ │Preview│Preview│Preview│ ... │ │ │Preview│Preview│Preview│ ... │ │
+ │  │                    │ │ │Tablet │Tablet │Tablet │     │ │ │Tablet │Tablet │Tablet │     │ │
+ │  │                    │ │ │       │       │       │     │ │ │       │       │       │     │ │
+ │  │                    │ │ ├───────┼───────┼───────┤     │ │ ├───────┼───────┼───────┤     │ │
+ │  │                    │ │ │Preview│Preview│Preview│     │ │ │Preview│Preview│Preview│     │ │
+ │  │                    │ │ │Thread │Thread │Thread │     │ │ │Thread │Thread │Thread │     │ │
+ │  │                    │ │ │Weave  │Weave  │Weave  │     │ │ │Weave  │Weave  │Weave  │     │ │
+ │  │                    │ │ ├───────┼───────┼───────┤     │ │ ├───────┼───────┼───────┤     │ │
+ │  │                    │ │ │Preview│Preview│Preview│     │ │ │Preview│Preview│Preview│     │ │
+ │  │                    │ │ │Thread │Thread │Thread │     │ │ │Thread │Thread │Thread │     │ │
+ │  │                    │ │ │Weave  │Weave  │Weave  │     │ │ │Weave  │Weave  │Weave  │     │ │
+ │  │                    │ │ ├───────┼───────┼───────┤     │ │ ├───────┼───────┼───────┤     │ │
+ │  │                    │ │ │Preview│Preview│Preview│     │ │ │Preview│Preview│Preview│     │ │
+ │  │                    │ │ │Thread │Thread │Thread │     │ │ │Thread │Thread │Thread │     │ │
+ │  │                    │ │ │Weave  │Weave  │Weave  │     │ │ │Weave  │Weave  │Weave  │     │ │
+ │  │                    │ │ ├───────┼───────┼───────┤     │ │ ├───────┼───────┼───────┤     │ │
+ │  │                    │ │ │Preview│Preview│Preview│     │ │ │Preview│Preview│Preview│     │ │
+ │  │                    │ │ │Thread │Thread │Thread │     │ │ │Thread │Thread │Thread │     │ │
+ │  │                    │ │ │Weave  │Weave  │Weave  │     │ │ │Weave  │Weave  │Weave  │     │ │
+ │  │                    │ │ └───────┴───────┴───────┘     │ │ └───────┴───────┴───────┘     │ │
+ │  │                    │ │  ...                          │ │  ...                          │ │
+ │  │                    │ │                               │ │                               │ │
+ │  │                    │ │ ┌─────────┐   ┌─────────┐     │ │                               │ │
+ │  │                    │ │ │    +    │   │    -    │     │ │                               │ │
+ │  │                    │ │ └─────────┘   └─────────┘     │ │                               │ │
+ │  │                    │ │                               │ │                               │ │
+ │  └────────────────────┘ └───────────────────────────────┘ └───────────────────────────────┘ │
+ │                                                                                             │
+ └─────────────────────────────────────────────────────────────────────────────────────────────┘
+ 
+ https://asciiflow.com/
+ 

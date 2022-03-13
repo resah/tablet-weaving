@@ -1,30 +1,31 @@
 <script lang="ts">
     import { _ } from 'svelte-i18n';
-	import { tablets } from '../stores/stores.js';
-    import type { Tablet } from '../model/Tablet';
+	import { appStorage } from '../stores/Storage';
+    import { Tablet } from '../model/Tablet';
+    import { Thread } from '../model/Thread';
     import ChartSummary from './ChartSummary.svelte';
     import ChartTablet from './ChartTablet.svelte';
     
 	const addTablet = () => {
-		tablets.update(t => {
-			const lastTablet = t[t.length - 1];
-			const newTablet: Tablet = {
-				sDirection: lastTablet.sDirection, 
-				holes: 4,
-				threads: lastTablet.threads.map(hole => {
-					return { color: hole.color };
+		appStorage.update(a => {
+			const lastTablet = a.tablets[a.tablets.length - 1];
+			const newTablet = new Tablet(
+				lastTablet.sDirection, 
+				4, 
+				lastTablet.threads.map(hole => {
+					return new Thread(hole.color);
 				})
-			};
-			t.push(newTablet);
-			return t;
+			);
+			a.tablets.push(newTablet);
+			return a;
 		});
 	}
 	
 	const removeTablet = () => {
-		if ($tablets.length > 1) {
-			tablets.update(t => {
-				t.pop();
-				return t;
+		if ($appStorage.tablets.length > 1) {
+			appStorage.update(a => {
+				a.tablets.pop();
+				return a;
 			});
 		}
 	}
@@ -44,14 +45,14 @@
 		    
 			<div class="uk-flex uk-flex-center uk-flex-row uk-flex-auto">
 		    	<div class="holes uk-flex-auto">
-		        	{#each $tablets[0].threads as _, index (index)}
+		        	{#each $appStorage.tablets[0].threads as _, index (index)}
 		        		<div class="holeIndex">
 		        			{String.fromCharCode(65 + index)}
 		        		</div>
 		    		{/each}
 				</div>
 		
-				{#each $tablets as tablet, index (index)}
+				{#each $appStorage.tablets as tablet, index (index)}
 					<ChartTablet index={index} bind:tablet/>
 				{/each}
 			</div>

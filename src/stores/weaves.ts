@@ -1,17 +1,17 @@
 import { derived } from 'svelte/store';
-import { weaveRows, tablets, rotationDirections } from './stores.js';
+import { appStorage } from './Storage';
 import type { Tablet } from '../model/Tablet';
 import type { Instruction } from '../model/instruction.type';
 import { Weave } from '../model/Weave';
 
 // Front pattern
-export const weavesFront = derived([weaveRows, tablets, rotationDirections], ([$weaveRows, $tablets, $rotationDirections]) => {
-	return $tablets.map((tablet: Tablet, tabletIndex: number) => generateWeaves($weaveRows, $rotationDirections, tablet, tabletIndex, 0, tablet.sDirection));
+export const weavesFront = derived([appStorage], ([$appStorage]) => {
+	return $appStorage.tablets.map((tablet: Tablet, tabletIndex: number) => generateWeaves($appStorage.weaveRows, $appStorage.rotationDirections, tablet, tabletIndex, 0, tablet.sDirection));
 });
 
 // Back pattern
-export const weavesBack = derived([weaveRows, tablets, rotationDirections], ([$weaveRows, $tablets, $rotationDirections]) => {
-	return $tablets.map((tablet: Tablet, tabletIndex: number) => generateWeaves($weaveRows, $rotationDirections, tablet, tabletIndex, 2, !tablet.sDirection));
+export const weavesBack = derived([appStorage], ([$appStorage]) => {
+	return $appStorage.tablets.map((tablet: Tablet, tabletIndex: number) => generateWeaves($appStorage.weaveRows, $appStorage.rotationDirections, tablet, tabletIndex, 2, !tablet.sDirection));
 });
 
 function generateWeaves(weaveRows: number, rotationDirections: Instruction, tablet: Tablet, tabletIndex: number, colorIndex: number, direction: boolean): Weave[] {

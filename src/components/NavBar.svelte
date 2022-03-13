@@ -1,7 +1,7 @@
 <script lang="ts">
     import { _, locale, locales } from 'svelte-i18n';
-	import { appConfig } from '../stores/appConfig.js';
-	import { templates } from '../stores/patternTemplates.js';
+	import { appConfig } from '../stores/appConfig';
+	import { templates } from '../stores/patternTemplates';
 	
     const handleLocaleChange = (selectedLocale: string) => {
 	    locale.set(selectedLocale);
@@ -48,10 +48,12 @@
                     </ul>
                 </div>
             </li>
-        	<li>
+            <li>
 				{#each $locales as l}
 	        		{#if $locale != l}
-	        			<a href={'#'} uk-icon="icon: world" on:click={() => handleLocaleChange(l)}>{$_('lang', { locale: l })}</a>
+		            	<button type="button" class="uk-button uk-button-link" uk-icon="icon: world" on:click={() => handleLocaleChange(l)}>
+							{$_('lang', { locale: l })}
+						</button>
 	        		{/if}
 				{/each}
             </li>
@@ -70,8 +72,11 @@
 </nav>
 
 <style>
-	.uk-navbar-nav > li > a {
+	.uk-navbar-nav > li > a,
+	.uk-navbar-nav > li > button {
 		min-height: 50px;
+		color: #666;
+		text-transform: uppercase;
 	}
 	input {
 		border: 0;

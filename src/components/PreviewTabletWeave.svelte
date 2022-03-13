@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { appConfig } from '../stores/appConfig.js';
+	import { appConfig } from '../stores/appConfig';
 	import { Weave } from '../model/Weave';
     import PreviewThreadWeave from './PreviewThreadWeave.svelte';
     

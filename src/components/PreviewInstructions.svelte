@@ -1,30 +1,30 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import { tablets, weaveRows, rotationDirections } from '../stores/stores.js';
+	import { appStorage } from '../stores/Storage';
 	
 	$: isActive = (i: number, j: number) => {
-		return (typeof $rotationDirections[i] !== 'undefined') && (typeof $rotationDirections[i][j] !== 'undefined') && ($rotationDirections[i][j] === true);
+		return (typeof $appStorage.rotationDirections[i] !== 'undefined') && (typeof $appStorage.rotationDirections[i][j] !== 'undefined') && ($appStorage.rotationDirections[i][j] === true);
 	};
 	
 	const resetDirections = () => {
-		$rotationDirections = {};
+		$appStorage.rotationDirections = {};
 	}
 	
 	const changeDirectionForRow = (row: number) => {
-		$tablets.forEach((element, column) => {
+		$appStorage.tablets.forEach((_, column) => {
 			changeDirectionForCell(row, column);
 		});
 	}
 	
 	const changeDirectionForCell = (row: number, column: number) => {
-		if (typeof $rotationDirections[row] === 'undefined') {
-			$rotationDirections[row] = {};
+		if (typeof $appStorage.rotationDirections[row] === 'undefined') {
+			$appStorage.rotationDirections[row] = {};
 		}
-		if ($rotationDirections[row][column]) {
-			delete $rotationDirections[row][column];
-			$rotationDirections = $rotationDirections;
+		if ($appStorage.rotationDirections[row][column]) {
+			delete $appStorage.rotationDirections[row][column];
+			$appStorage.rotationDirections = $appStorage.rotationDirections;
 		} else {
-			$rotationDirections[row][column] = true;
+			$appStorage.rotationDirections[row][column] = true;
 		}
 	}
 </script>
@@ -37,17 +37,17 @@
 				uk-icon="icon: trash; ratio: 0.7" 
 				uk-tooltip={$_('preview.patternDevelopment.reset')}></button>
 		</th>
-		{#each $tablets as _, j (j)}
+		{#each $appStorage.tablets as _, j (j)}
 			<th>{j + 1}</th>
 		{/each}
 	</tr>
-	{#each [...Array($weaveRows).keys()] as row, i (i)}
+	{#each [...Array($appStorage.weaveRows).keys()] as row, i (i)}
 		<tr>
 			<th class="uk-text-right">
 				<button type="button" on:click={() => changeDirectionForRow(i)}
 					uk-tooltip={$_('preview.patternDevelopment.switchAll')}>{i + 1}</button>
 			</th>
-			{#each $tablets as tablet, j (j)}
+			{#each $appStorage.tablets as tablet, j (j)}
 				<td class="{isActive(i, j) ? 'active' : ''}">
 					<button type="button" class="cellLink" on:click={() => changeDirectionForCell(i, j)}
 						uk-tooltip={$_('preview.patternDevelopment.index', { values: { column: (j+1), row: (i+1) } })} >&nbsp;</button>

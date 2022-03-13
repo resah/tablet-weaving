@@ -2,7 +2,9 @@
 
 A small tool to create a preview and instructions for a custom tablet weaving pattern: https://resah.github.io/tablet-weaving/
 
-Still work in progress and currently supports the following features:
+Still work in progress.
+
+### Features
 
 * Change number of 4-hole tablets
 * Set thread colors for each hole
@@ -19,16 +21,21 @@ Still work in progress and currently supports the following features:
   * Minimize back view
   * Colour helper
 
-Planned features:
+
+### Planned features
+
 * Start screen with template selection
 * Template selection from modal (instead menu)
+* Lock direction switches for columns (to allow easier outer supporting weaves)
+* Share copy-paste menu entry
 * "Missed hole“ or "pebble weave"
 * Set number of holes for tablets
 * Custom colour picker (maybe selectable from different versions)
 * Inverted view (bottom-up, which seems to be used more often)
 * PWA
 
-Not planned for now:
+### Not planned for now
+
 * Set number of holes for each tablet individually
 * Step without tablet rotation
 * Switching tablet positions

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { appConfig } from '../stores/appConfig.js';
+	import { appConfig } from '../stores/appConfig';
 	import type { Weave } from '../model/Weave';
 
 	export let tabletIndex: number;

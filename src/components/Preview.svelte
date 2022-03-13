@@ -1,8 +1,8 @@
 <script lang="ts">
     import * as animateScroll from 'svelte-scrollto';
     import { _ } from 'svelte-i18n';
-	import { weaveRows } from '../stores/stores.js';
-	import { weavesFront, weavesBack } from '../stores/weaves.js';
+	import { appStorage } from '../stores/Storage';
+	import { weavesFront, weavesBack } from '../stores/weaves';
     import PreviewInstructions from './PreviewInstructions.svelte';
     import PreviewWeave from './PreviewWeave.svelte';
     
@@ -10,12 +10,12 @@
     let hiddenWeaveBack = false;
 	
 	const addWeaveRow = () => {
-		$weaveRows = $weaveRows + 1;
+		$appStorage.weaveRows = $appStorage.weaveRows + 1;
 		animateScroll.scrollToBottom();
 	}
 	
 	const removeWeaveRow = () => {
-		$weaveRows = $weaveRows - 1;
+		$appStorage.weaveRows = $appStorage.weaveRows - 1;
 	}
 </script>
 

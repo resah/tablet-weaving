@@ -1,6 +1,6 @@
 import { readable } from 'svelte/store';
 
-const patternTemplates = [
+export const patternTemplates = [
 	{ 
 		name: "Oseberg",
 		tablets: 10,

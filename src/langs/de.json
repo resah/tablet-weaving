@@ -9,7 +9,8 @@
     	"size": "Größe",
     	"outline": "Fadenumrisse",
     	"weft": "Schussfaden"
-    }
+    },
+    "build": "Build"
   },
   "chart": {
   	"title": "Schärbrief",

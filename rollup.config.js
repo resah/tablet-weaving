@@ -3,12 +3,14 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import replace from '@rollup/plugin-replace';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 import json from "@rollup/plugin-json";
 
 const production = !process.env.ROLLUP_WATCH;
+const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
 
 function serve() {
 	let server;
@@ -40,6 +42,12 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+	    replace({
+	    	preventAssignment: true,
+	        '__BUILD_DATE__': (new Date()).toLocaleDateString('de-DE', options),
+	        '__BUILD_NUMBER__': process.env.GITHUB_RUN_NUMBER ? '#'+process.env.GITHUB_RUN_NUMBER : '' 
+	    }),
+	    
 		svelte({
 			preprocess: sveltePreprocess({ sourceMap: !production }),
 			compilerOptions: {

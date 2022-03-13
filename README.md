@@ -23,7 +23,6 @@ Still work in progress.
 
 ### Planned features
 
-* Display last build date and version number
 * Start screen with template selection
 * Template selection from modal (instead menu)
 * Lock direction switches for columns (to allow easier outer supporting weaves)

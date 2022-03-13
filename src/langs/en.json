@@ -9,7 +9,8 @@
     	"size": "Size",
     	"outline": "Thread outline",
     	"weft": "Weft"
-    }
+    },
+    "build": "Build"
   },
   "chart": {
   	"title": "Threading Chart",

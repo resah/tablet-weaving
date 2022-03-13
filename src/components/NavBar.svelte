@@ -67,6 +67,10 @@
             		<span class="uk-icon uk-margin-small-right" uk-icon="icon: github"></span>
             	</a>
             </li>
+            <li class="uk-text-right uk-text-meta">
+            	{$_('navbar.build')} __BUILD_NUMBER__
+            	<div class="uk-navbar-subtitle">__BUILD_DATE__</div>
+            </li>
         </ul>
     </div>
 </nav>

@@ -45,7 +45,8 @@ export default {
 	    replace({
 	    	preventAssignment: true,
 	        '__BUILD_DATE__': (new Date()).toLocaleDateString('de-DE', options),
-	        '__BUILD_NUMBER__': process.env.GITHUB_RUN_NUMBER ? '#'+process.env.GITHUB_RUN_NUMBER : '' 
+	        '__BUILD_NUMBER__': process.env.GITHUB_RUN_NUMBER ? '#'+process.env.GITHUB_RUN_NUMBER : '',
+	        '__VERSION_NUMBER__': process.env.VERSION_NUMBER ? 'v'+process.env.VERSION_NUMBER : ''
 	    }),
 	    
 		svelte({

@@ -1,6 +1,6 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/resah/tablet-weaving)
-[![Tablet Weaving](https://github.com/resah/tablet-weaving/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/resah/tablet-weaving/actions/workflows/build-and-publish.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Tablet Weaving](https://github.com/resah/tablet-weaving/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/resah/tablet-weaving/actions/workflows/build-and-publish.yml)
 
 
 # Tablet weaving pattern helper
@@ -28,6 +28,7 @@ Still work in progress.
 
 ### Planned features
 
+* Move version to footer
 * Start screen with template selection
 * Template selection from modal (instead menu)
 * Lock direction switches for columns (to allow easier outer supporting weaves)

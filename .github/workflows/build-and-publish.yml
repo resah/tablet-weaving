@@ -24,16 +24,19 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install
-    - run: npm run build
     - run: npm run check
     - run: npm run test
+    - name: Github Tag with semantic versioning
+      id: versioning
+      uses: hennejg/github-tag-action@v4.3.1
+      with:
+        release_branches: main
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - run: npm run build
+      env:
+        VERSION_NUMBER: ${{steps.versioning.outputs.new_version}}
     - name: deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
        github_token: ${{ secrets.GITHUB_TOKEN }}
        publish_dir: ./public
-    - name: Github Tag with semantic versioning
-      uses: hennejg/github-tag-action@v4.3.1
-      with:
-        release_branches: main
-        github_token: ${{ secrets.GITHUB_TOKEN }}

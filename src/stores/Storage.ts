@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { patternTemplates } from './patternTemplates';
+import patternTemplates from '../templates/templates.json';
 import type { Instruction } from '../model/instruction.type';
 import { Tablet } from '../model/Tablet';
 
@@ -13,22 +13,24 @@ export class Storage {
 	
     constructor() {
 		// has URL -> load from URL
-		console.log('Trying to load from URL ...');
+		//console.log('Trying to load from URL ...');
 		if (window.location.hash.length > 10) {
-			this.fromString(window.location.hash.substring(1));
-			return;
+			if (this.fromString(window.location.hash.substring(1))) {
+				return;
+			}
 		}
 		
 	    // has local storage -> load from local storage
-		console.log('Trying to load from local storage ...');
+		//console.log('Trying to load from local storage ...');
 		const localStorageValue = localStorage.getItem(LOCAL_STORAGE_KEY);
-		if (localStorageValue !== undefined && localStorageValue!== null) {
-			this.fromString(localStorageValue);
-			return;
+		if (localStorageValue !== undefined && localStorageValue !== null) {
+			if (this.fromString(localStorageValue)) {
+				return;
+			}
 		}
 
 	    // create default values
-		console.log('No previous setup found, loading default values');
+		//console.log('No previous setup found, loading default values');
 		this.fromString(patternTemplates[0].hash);
  	}
 	
@@ -45,7 +47,7 @@ export class Storage {
 		return `${this.tablets.length}:${this.weaveRows}:${rotDirValue}:${colors}`;
     }
 
-	fromString(input: string) {
+	fromString(input: string): boolean {
 		const parts = window.atob(input).split(':');
 		if (parts.length !== 4) {
 			return;
@@ -70,6 +72,7 @@ export class Storage {
 		this.weaveRows = numberOfWeaves;
 		this.rotationDirections = initRotationDirections;
 		this.tablets = initTablets;
+		return true;
 	}
 }
 

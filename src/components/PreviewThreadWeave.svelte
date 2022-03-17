@@ -9,6 +9,7 @@
 </script>
 
 <div class="weave weaveSize{$appConfig.weaveSize} {classNames}"
+	data-testid="preview-thread-weave"
 	uk-tooltip="{tabletIndex + 1}, {weaveRow + 1}" 
 	class:sDirection={weave.sDirection} 
 	style="--backgroundColor: {weave.color}; --borderColor: {$appConfig.weaveBorderColor}">

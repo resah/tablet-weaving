@@ -10,12 +10,18 @@
     let hiddenWeaveBack = false;
 	
 	const addWeaveRow = () => {
-		$appStorage.weaveRows = $appStorage.weaveRows + 1;
+		appStorage.update(a => {
+			a.weaveRows = a.weaveRows + 1;
+			return a;
+		});
 		animateScroll.scrollToBottom();
 	}
 	
 	const removeWeaveRow = () => {
-		$appStorage.weaveRows = $appStorage.weaveRows - 1;
+		appStorage.update(a => {
+			a.weaveRows = a.weaveRows - 1;
+			return a;
+		});
 	}
 </script>
 
@@ -28,28 +34,31 @@
 				<ul class="uk-iconnav uk-iconnav-vertical">
 				    <li hidden={!hiddenInstructions}>
 				    	<button type="button"
+				    		data-testid="preview-instructions-show"
 				    		uk-icon="icon: thumbnails"
 				    		uk-tooltip={$_('preview.patternDevelopment.show')}
 				    		on:click={() => hiddenInstructions = false}></button>
 			    	</li>
 				</ul>
 			</div>
-		    <div class="uk-first-column uk-text-center" hidden={hiddenInstructions}>
+		    <div class="uk-first-column uk-text-center" hidden={hiddenInstructions} data-testid="preview-instructions">
 		    	<h3>
 		    		{$_('preview.patternDevelopment.title')} 
 		    		<button type="button"
+		    			data-testid="preview-instructions-hide"
 		    			class="uk-button uk-button-link" 
 			    		uk-tooltip={$_('preview.patternDevelopment.hide')}
 		    			on:click={() => hiddenInstructions = true}><span class="uk-margin-small-right" uk-icon="shrink"></span></button>
 	    		</h3>
 		    </div>
-		    <div class="uk-text-center uk-margin-small-bottom">
+		    <div class="uk-text-center uk-margin-small-bottom" data-testid="preview-front">
 		    	<h3>{$_('preview.front.title')}</h3>
 		    </div>
-		    <div class="uk-text-center" hidden={hiddenWeaveBack}>
+		    <div class="uk-text-center" hidden={hiddenWeaveBack} data-testid="preview-back">
 		    	<h3>
 		    		{$_('preview.back.title')}
 		    		<button type="button"
+		    			data-testid="preview-back-hide"
 		    			class="uk-button uk-button-link" 
 			    		uk-tooltip={$_('preview.back.hide')} 
 		    			on:click={() => hiddenWeaveBack = true}><span class="uk-margin-small-right" uk-icon="shrink"></span></button>
@@ -59,6 +68,7 @@
 				<ul class="uk-iconnav uk-iconnav-vertical">
 				    <li hidden={!hiddenWeaveBack}>
 				    	<button type="button"
+				    		data-testid="preview-back-show"
 				    		uk-icon="icon: grid"
 				    		uk-tooltip={$_('preview.back.show')}
 				    		on:click={() => hiddenWeaveBack = false}></button>
@@ -70,13 +80,13 @@
 	    <!-- Second row -->
 	    <div class="uk-flex uk-flex-between uk-flex-top">
 	    	<div class="uk-flex-none"></div>
-		    <div class="scrollable" hidden={hiddenInstructions}>
+		    <div class="scrollable" hidden={hiddenInstructions} data-test-instructions>
 				<PreviewInstructions />
 		    </div>
-		    <div class="uk-margin-medium-top scrollable">
+		    <div class="uk-margin-medium-top scrollable" data-test-front-weave>
 	        	<PreviewWeave weavePattern={$weavesFront}/>
 		    </div>
-		    <div class="uk-margin-medium-top scrollable" hidden={hiddenWeaveBack}>
+		    <div class="uk-margin-medium-top scrollable" hidden={hiddenWeaveBack} data-test-back-weave>
 		    	<PreviewWeave weavePattern={$weavesBack}/>
 		    </div>
 		    <div class="uk-flex-none"></div>
@@ -86,10 +96,12 @@
 	    <div class="uk-flex uk-flex-around uk-flex-top">
 		    <div class="uk-first-column"></div>
 		    <div class="uk-margin-small-top uk-text-center">
-		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="plus" 
+		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="plus"
+		    		data-testid="add-weave-row" 
 		    		on:click|preventDefault={addWeaveRow}
 		    		uk-tooltip={$_('preview.rows.add')}></button>
 		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="minus" 
+		    		data-testid="remove-weave-row"
 		    		on:click|preventDefault={removeWeaveRow}
 		    		uk-tooltip={$_('preview.rows.remove')}></button>
 		    </div>

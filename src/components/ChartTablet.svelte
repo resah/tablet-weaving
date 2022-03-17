@@ -22,7 +22,7 @@
 	{/each}
 	
 	<div class="threadDirection">
-		<button on:click={toggleDirection} uk-tooltip={$_("chart.tablet.switch")} >
+		<button on:click={toggleDirection} uk-tooltip={$_("chart.tablet.switch")} data-testid="toggle-direction">
 			{#if tablet.sDirection}
 			  S
 			{:else}

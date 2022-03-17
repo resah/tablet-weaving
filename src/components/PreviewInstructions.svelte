@@ -34,6 +34,7 @@
 		<th>
 			<button class="resetDirections" type="button" 
 				on:click={resetDirections}
+				data-testid="reset-directions"
 				uk-icon="icon: trash; ratio: 0.7" 
 				uk-tooltip={$_('preview.patternDevelopment.reset')}></button>
 		</th>
@@ -45,11 +46,13 @@
 		<tr>
 			<th class="uk-text-right">
 				<button type="button" on:click={() => changeDirectionForRow(i)}
+					data-testid="toggle-directions-row-{i}"
 					uk-tooltip={$_('preview.patternDevelopment.switchAll')}>{i + 1}</button>
 			</th>
 			{#each $appStorage.tablets as tablet, j (j)}
 				<td class="{isActive(i, j) ? 'active' : ''}">
 					<button type="button" class="cellLink" on:click={() => changeDirectionForCell(i, j)}
+						data-testid="toggle-directions-cell-{i}-{j}"
 						uk-tooltip={$_('preview.patternDevelopment.index', { values: { column: (j+1), row: (i+1) } })} >&nbsp;</button>
 				</td>
 			{/each}

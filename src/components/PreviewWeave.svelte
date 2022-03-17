@@ -7,7 +7,7 @@
     export let weavePattern: Weave[][];
 </script>
 
-<div class="uk-flex uk-flex-center">
+<div class="uk-flex uk-flex-center" data-testid="preview-weave">
 	<div class="tabletWeaveIndices weaveSize{$appConfig.weaveSize} uk-text-small">
     	{#each [...Array($appStorage.weaveRows).keys()] as _, index (index)}
     		<div class="tabletWeaveIndex {index % 2 ? 'even' : 'odd'}">

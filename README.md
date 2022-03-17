@@ -1,3 +1,6 @@
+[![Tablet Weaving](https://github.com/resah/tablet-weaving/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/resah/tablet-weaving/actions/workflows/build-and-publish.yml)
+
+
 # Tablet weaving pattern helper
 
 A small tool to create a preview and instructions for a custom tablet weaving pattern: https://resah.github.io/tablet-weaving/

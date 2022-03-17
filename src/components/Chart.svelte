@@ -32,7 +32,7 @@
 	
 </script>
 
-<div class="uk-section uk-section-xsmall uk-section-muted threadingChart">
+<div class="uk-section uk-section-xsmall uk-section-muted threadingChart" data-test-chart>
 	<div class="uk-container uk-container-small uk-container-expand">
 		<h2>{$_('chart.title')}</h2>
 		
@@ -59,9 +59,11 @@
 			
 		    <div>
 		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom " uk-icon="plus" 
+		    		data-testid="add-tablet"
 		    		on:click|preventDefault={addTablet}
 		    		uk-tooltip={$_('chart.tablet.add')}></button><br>
-		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small" uk-icon="minus" 
+		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small" uk-icon="minus"
+		    		data-testid="remove-tablet" 
 		    		on:click|preventDefault={removeTablet}
 		    		uk-tooltip={$_('chart.tablet.remove')}></button>
 		    </div>

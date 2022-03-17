@@ -51,7 +51,7 @@
             <li>
 				{#each $locales as l}
 	        		{#if $locale != l}
-		            	<button type="button" class="uk-button uk-button-link" uk-icon="icon: world" on:click={() => handleLocaleChange(l)}>
+		            	<button type="button" class="uk-button uk-button-link" uk-icon="icon: world" data-testid="switch-locale-{l}" on:click={() => handleLocaleChange(l)}>
 							{$_('lang', { locale: l })}
 						</button>
 	        		{/if}

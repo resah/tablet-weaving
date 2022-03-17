@@ -22,7 +22,7 @@
 	<div></div>
 	<div class="uk-text-center">
 		{#if showColors}
-	    	<button type="button" class="uk-button uk-button-link" on:click={() => showColors = false}>
+	    	<button data-testid="summary-close" type="button" class="uk-button uk-button-link" on:click={() => showColors = false}>
 	    		<span uk-icon="icon: chevron-down">{$_('chart.summary.title')}
     		</button>
 		    <table class="uk-table uk-table-small uk-table-divider uk-background-default yarnLengths">
@@ -31,7 +31,9 @@
 		    		<td><input type="color" bind:value={$appConfig.weftColor} uk-tooltip={$_('chart.summary.weft')} class="weftColor" /><br></td>
 		        	{#each $weaveLength.yarnLengths as wl, index (index)}
 		        		<td class="uk-text-right">
-		        			{ wl.count } x <input type="color" uk-tooltip={wl.color} value={wl.color} on:change={(e) => updateColor(e, wl.color)} />
+		        			{ wl.count } x <input type="color" uk-tooltip={wl.color} value={wl.color}
+		        				data-testid="chart-summary-update-color-{wl.color}" 
+		        				on:change={(e) => updateColor(e, wl.color)} />
 		        		</td>
 		    		{/each}
 		    	</tr>
@@ -53,7 +55,7 @@
 		    	</tr>
 		    </table>
 		{:else}
-			<button type="button" class="uk-button uk-button-link" on:click={() => showColors = true}>
+			<button data-testid="summary-open" type="button" class="uk-button uk-button-link" on:click={() => showColors = true}>
 				<span uk-icon="icon: chevron-right">{$_('chart.summary.title')}
 			</button>
 		{/if}

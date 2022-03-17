@@ -32,8 +32,8 @@ jobs:
       with:
        github_token: ${{ secrets.GITHUB_TOKEN }}
        publish_dir: ./public
-    - name: Bump version and push tag
-      uses: hennejg/github-tag-action@v4.1.jh1
+    - name: Github Tag with semantic versioning
+      uses: hennejg/github-tag-action@v4.3.1
       with:
         release_branches: main
         github_token: ${{ secrets.GITHUB_TOKEN }}

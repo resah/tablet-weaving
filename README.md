@@ -1,3 +1,4 @@
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/resah/tablet-weaving)
 [![Tablet Weaving](https://github.com/resah/tablet-weaving/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/resah/tablet-weaving/actions/workflows/build-and-publish.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 

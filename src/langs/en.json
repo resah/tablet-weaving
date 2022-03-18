@@ -10,7 +10,11 @@
     	"outline": "Thread outline",
     	"weft": "Weft"
     },
-    "build": "Build"
+    "info": {
+	    "buildNumber": "Build no.",
+	    "buildDate": "Build date",
+	    "version": "Version"
+    }
   },
   "chart": {
   	"title": "Threading Chart",

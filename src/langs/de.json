@@ -10,7 +10,11 @@
     	"outline": "Fadenumrisse",
     	"weft": "Schussfaden"
     },
-    "build": "Build"
+    "info": {
+	    "buildNumber": "Build Nr.",
+	    "buildDate": "Build Datum",
+	    "version": "Version"
+    }
   },
   "chart": {
   	"title": "Schärbrief",

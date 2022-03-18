@@ -28,7 +28,6 @@ Still work in progress.
 
 ### Planned features
 
-* Move version to footer
 * Start screen with template selection
 * Template selection from modal (instead menu)
 * Lock direction switches for columns (to allow easier outer supporting weaves)

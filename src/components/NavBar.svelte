@@ -68,8 +68,16 @@
             	</a>
             </li>
             <li class="uk-text-right uk-text-meta">
-            	{$_('navbar.build')} __VERSION_NUMBER__
-            	<div class="uk-navbar-subtitle">__BUILD_DATE__</div>
+            	{$_('navbar.info.version')}
+            	<div class="uk-navbar-subtitle">__VERSION_NUMBER__</div>
+            	<div uk-dropdown>
+				    <ul class="uk-nav uk-dropdown-nav">
+				    	<li class="uk-nav-header">{$_('navbar.info.buildNumber')}</li>
+				        <li>__BUILD_NUMBER__</li>
+				        <li class="uk-nav-header">{$_('navbar.info.buildDate')}</li>
+				        <li>__BUILD_DATE__</li>
+				    </ul>
+				</div>
             </li>
         </ul>
     </div>

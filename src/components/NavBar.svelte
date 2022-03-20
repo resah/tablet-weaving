@@ -1,7 +1,6 @@
 <script lang="ts">
     import { _, locale, locales } from 'svelte-i18n';
 	import { appConfig } from '../stores/appConfig';
-	import { templates } from '../stores/patternTemplates';
 	
     const handleLocaleChange = (selectedLocale: string) => {
 	    locale.set(selectedLocale);
@@ -16,7 +15,7 @@
             </li>
         </ul>
     </div>
-    <div class="uk-navbar-center">
+    <div class="uk-navbar-center" data-testid="nav-bar">
         {$_('navbar.title')}
 	</div>
     <div class="uk-navbar-right">

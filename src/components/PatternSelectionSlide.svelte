@@ -8,7 +8,7 @@
 	const imageName = template.name.toLowerCase().replace(/[^a-zA-Z0-9]/i, "");
 </script>
 
-<li data-technique="{template.technique}" data-region="{template.region}">
+<li data-testid="pattern-selection-slide-{index}" data-technique="{template.technique}" data-region="{template.region}">
 	<div class="uk-grid-collapse" uk-grid>
 		<div class="uk-width-1-3@s uk-inline uk-margin-medium-bottom margin-remove-bottom-s">
 		    <img src="assets/patterns/{imageName}.png" alt="{$_('selection.preview')}">

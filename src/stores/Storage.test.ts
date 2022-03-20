@@ -11,11 +11,11 @@ describe('Storage', () => {
 	expect(get(appStorage).tablets.length).toBe(3);
   });
 
-  test('should not load invalid local storage and fallback to first template', () => {
+  test('should not load invalid local storage and stay empty', () => {
 	window.location.hash = '#abc';
 	window.localStorage.setItem('tabletWeaving', 'YXM3Njg3YXNkOnNkZnNk');
 	appStorage.update(_ => new Storage());
 
-	expect(get(appStorage).tablets.length).toBe(10);
+	expect(get(appStorage).tablets.length).toBe(0);
   });
 });

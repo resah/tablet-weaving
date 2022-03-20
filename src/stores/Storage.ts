@@ -1,5 +1,4 @@
 import { writable } from 'svelte/store';
-import patternTemplates from '../templates/templates.json';
 import type { Instruction } from '../model/instruction.type';
 import { Tablet } from '../model/Tablet';
 
@@ -30,8 +29,7 @@ export class Storage {
 		}
 
 	    // create default values
-		//console.log('No previous setup found, loading default values');
-		//this.fromString(patternTemplates[0].hash);
+		//console.log('No previous setup found');
 		this.weaveRows = 0;
 		this.tablets = [];
 		this.rotationDirections = {};

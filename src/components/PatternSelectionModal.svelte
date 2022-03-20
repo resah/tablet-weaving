@@ -1,19 +1,15 @@
 <script lang="ts">
     import { _, locale, locales } from 'svelte-i18n';
-	import { templates } from '../stores/patternTemplates';
 	import { appStorage } from '../stores/Storage';
-	import patternTemplates from '../templates/templates';
+	import { regions, techniques, templates } from '../stores/patternTemplates';
 	import PatternSelectionSlide from './PatternSelectionSlide.svelte';
-	
-	const techniques = [...new Set(patternTemplates.map(t => t.technique))];
-	const regions = [...new Set(patternTemplates.map(t => t.region))];
 	
     const handleLocaleChange = (selectedLocale: string) => {
 	    locale.set(selectedLocale);
     };
 </script>
 
-<div id="pattern-selection" uk-modal class="uk-modal uk-modal-container" class:uk-open="{$appStorage.tablets.length == 0}">
+<div id="pattern-selection" data-testid="pattern-selection-modal" uk-modal class="uk-modal uk-modal-container" class:uk-open="{$appStorage.tablets.length == 0}">
     <div class="uk-modal-dialog">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <div class="uk-modal-header">
@@ -48,7 +44,7 @@
 			        </div>
 			        <div>
 			            <ul class="uk-subnav uk-subnav-pill">
-			            	{#each techniques as technique, index (index)}
+			            	{#each $techniques as technique, index (index)}
 			            		{#if technique.length > 0}
 				                	<li uk-filter-control="filter: [data-technique='{technique}']; group: data-technique"><a href="#">{technique}</a></li>
 				                {/if}
@@ -57,7 +53,7 @@
 			        </div>
 			        <div>
 			            <ul class="uk-subnav uk-subnav-pill">
-			            	{#each regions as region, index (index)}
+			            	{#each $regions as region, index (index)}
 			            		{#if region.length > 0}
 				                	<li uk-filter-control="filter: [data-region='{region}']; group: data-region"><a href="#">{region}</a></li>
 				                {/if}

@@ -43,10 +43,10 @@
 		.weaveSize3 {
 			width: 13px;
 			height: 45px;
-			transform: skew(0, -60deg);
+			transform: skew(0, -58deg);
 		}
 		.weaveSize3.sDirection {
-			transform: skew(0, 60deg);
+			transform: skew(0, 58deg);
 		}
 		
 		.final {

@@ -28,8 +28,12 @@ Still work in progress.
 
 ### Planned features
 
-* Start screen with template selection
-* Template selection from modal (instead menu)
+* Option to disable weave outlines
+* SVG view (with dynamic zoom option)
+* PDF generation
+* Print view
+* Mobile view
+* Help page with links and resources about tablet weaving
 * Lock direction switches for columns (to allow easier outer supporting weaves)
 * Share copy-paste menu entry
 * "Missed hole“ or "pebble weave"

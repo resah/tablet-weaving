@@ -2,7 +2,7 @@
   "lang": "Deutsch",
   "navbar": {
     "title": "Brettchenweben",
-    "templates": "Vorlagen",
+    "templates": "Musterauswahl",
     "display": "Anzeige",
     "preview": {
     	"weave": "Vorschau Gewebe",
@@ -15,6 +15,29 @@
 	    "buildDate": "Build Datum",
 	    "version": "Version"
     }
+  },
+  "selection": {
+  	"pattern": "Musterauswahl",
+  	"description": "Mit welchem Muster möchtest du starten?",
+  	"filter": {
+  		"label": "Filter",
+  		"all": "Alle"
+	},
+  	"preview": "Mustervorschau",
+  	"confirm": "Auswählen",
+  	"century": {
+  		"label": "Jahrhundert",
+  		"value": "{century}. Jhdt."
+	},
+  	"region": {
+  		"label": "Region"
+	},
+  	"technique": {
+  		"label": "Technik"
+	},
+  	"tablets": {
+  		"label": "Brettchen"
+	}
   },
   "chart": {
   	"title": "Schärbrief",

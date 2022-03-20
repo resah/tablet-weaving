@@ -12,14 +12,7 @@
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
             <li>
-                <a href={'#'}>{$_('navbar.templates')}</a>
-                <div class="uk-navbar-dropdown">
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                    	{#each $templates as template, index (index)}
-	                        <li><a href="?{(new Date()).getTime()}#{template.hash}">{template.name}</a></li>
-                    	{/each}
-                    </ul>
-                </div>
+                <button type="button" class="uk-button uk-button-link uk-navbar-item" uk-toggle="target: #pattern-selection">{$_('navbar.templates')}</button>
             </li>
         </ul>
     </div>

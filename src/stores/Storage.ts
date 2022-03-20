@@ -31,7 +31,10 @@ export class Storage {
 
 	    // create default values
 		//console.log('No previous setup found, loading default values');
-		this.fromString(patternTemplates[0].hash);
+		//this.fromString(patternTemplates[0].hash);
+		this.weaveRows = 0;
+		this.tablets = [];
+		this.rotationDirections = {};
  	}
 	
 	toString(): string {
@@ -80,7 +83,7 @@ export const appStorage = writable<Storage>(new Storage());
 
 // Update url and local storage with every update
 appStorage.subscribe((value: Storage) => {
-	if (value) {
+	if (value && value.tablets.length > 0) {
 		const storageHash = window.btoa(value.toString()); 
 		window.location.hash = "#" + storageHash;
 		localStorage.setItem(LOCAL_STORAGE_KEY, storageHash);

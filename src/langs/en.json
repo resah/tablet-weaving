@@ -2,7 +2,7 @@
   "lang": "English",
   "navbar": {
     "title": "Tablet Weaving",
-    "templates": "Templates",
+    "templates": "Pattern Selection",
     "display": "Display",
     "preview": {
     	"weave": "Preview weave",
@@ -15,6 +15,29 @@
 	    "buildDate": "Build date",
 	    "version": "Version"
     }
+  },
+  "selection": {
+  	"pattern": "Pattern Selection",
+  	"description": "Please select a pattern to start with.",
+  	"filter": {
+  		"label": "Filter",
+  		"all": "All"
+	},
+  	"preview": "Pattern preview",
+  	"confirm": "Apply",
+  	"century": {
+  		"label": "Century",
+  		"value": "{century}th century"
+	},
+  	"region": {
+  		"label": "Region"
+	},
+  	"technique": {
+  		"label": "Technique"
+	},
+  	"tablets": {
+  		"label": "Tablets"
+	}
   },
   "chart": {
   	"title": "Threading Chart",

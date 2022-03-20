@@ -23,7 +23,7 @@
 	<div class="uk-text-center">
 		{#if showColors}
 	    	<button data-testid="summary-close" type="button" class="uk-button uk-button-link" on:click={() => showColors = false}>
-	    		<span uk-icon="icon: chevron-down">{$_('chart.summary.title')}
+	    		<span uk-icon="icon: album"></span> {$_('chart.summary.title')} <span uk-icon="icon: chevron-down"></span>
     		</button>
 		    <table class="uk-table uk-table-small uk-table-divider uk-background-default yarnLengths">
 		    	<tr>
@@ -56,7 +56,7 @@
 		    </table>
 		{:else}
 			<button data-testid="summary-open" type="button" class="uk-button uk-button-link" on:click={() => showColors = true}>
-				<span uk-icon="icon: chevron-right">{$_('chart.summary.title')}
+				<span uk-icon="icon: album"></span> {$_('chart.summary.title')} <span uk-icon="icon: chevron-right"></span>
 			</button>
 		{/if}
 	</div>

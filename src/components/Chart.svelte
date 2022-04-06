@@ -45,6 +45,7 @@
 		    
 			<div class="uk-flex uk-flex-center uk-flex-row uk-flex-auto">
 		    	<div class="holes uk-flex-auto">
+	    			<div class="holeIndex">&nbsp;</div>
 		        	{#each $appStorage.tablets[0].threads as _, index (index)}
 		        		<div class="holeIndex">
 		        			{String.fromCharCode(65 + index)}
@@ -60,10 +61,12 @@
 		    <div>
 		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom " uk-icon="plus" 
 		    		data-testid="add-tablet"
+		    		aria-label={$_('chart.tablet.add')}
 		    		on:click|preventDefault={addTablet}
 		    		uk-tooltip={$_('chart.tablet.add')}></button><br>
 		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small" uk-icon="minus"
 		    		data-testid="remove-tablet" 
+		    		aria-label={$_('chart.tablet.remove')}
 		    		on:click|preventDefault={removeTablet}
 		    		uk-tooltip={$_('chart.tablet.remove')}></button>
 		    </div>
@@ -79,15 +82,13 @@
 		.holes {
 			margin-right: 2px;
 			max-width: 50px;
-			padding-top: 22px;
 		}
 		.holeIndex {
-			height: 19px;
+			height: 1.2em;
 			margin: 1px 0;
 			padding: 2px;
-			background-color: white !important;
 			text-align: center;
-			border: 1px solid black !important;
+			line-height: 1.2em;
 		}
 	}
 	

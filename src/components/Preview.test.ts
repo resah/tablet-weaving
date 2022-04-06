@@ -20,25 +20,25 @@ describe('Preview component', () => {
   test('should add a weave row', async () => {
     const svelteInfo = render(Preview);
 
-	// because of white-out row and front + back
-	// (tablets * (length + 1) ) * 2  
-	expect(svelteInfo.queryAllByTestId('preview-thread-weave').length).toBe((2 * (10 + 1)) * 2);
+	// because of front + back
+	// (tablets * length ) * 2  
+	expect(svelteInfo.queryAllByTestId('preview-thread-weave').length).toBe((2 * 10) * 2);
 	
 	const button = svelteInfo.queryByTestId('add-weave-row');
 	await fireEvent.click(button);
 
-	expect(svelteInfo.queryAllByTestId('preview-thread-weave').length).toBe((2 * (11 + 1)) * 2);
+	expect(svelteInfo.queryAllByTestId('preview-thread-weave').length).toBe((2 * 11) * 2);
   });
 
   test('should remove a weave row', async () => {
     const svelteInfo = render(Preview);
 
-	expect(svelteInfo.queryAllByTestId('preview-thread-weave').length).toBe((2 * (10 + 1)) * 2);
+	expect(svelteInfo.queryAllByTestId('preview-thread-weave').length).toBe((2 * 10) * 2);
 
 	const button = svelteInfo.queryByTestId('remove-weave-row');
 	await fireEvent.click(button);
 
-	expect(svelteInfo.queryAllByTestId('preview-thread-weave').length).toBe((2 * (9 + 1)) * 2);
+	expect(svelteInfo.queryAllByTestId('preview-thread-weave').length).toBe((2 * 9) * 2);
   });
 
   test('should hide/show instructions', async () => {

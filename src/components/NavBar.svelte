@@ -27,7 +27,7 @@
                     	<li class="uk-nav-header">{$_('navbar.preview.weave')}</li>
                         <li>
                         	{$_('navbar.preview.size')}:
-                        	<input class="uk-range" type="range" min="1" max="3" step="1" bind:value={$appConfig.weaveSize} />
+                        	<input class="uk-range" type="range" min="1" max="5" step="1" bind:value={$appConfig.weaveSize} />
                     	</li>
                     	<li>
                     		{$_('navbar.preview.outline')}:
@@ -50,12 +50,12 @@
 				{/each}
             </li>
             <li>
-            	<a href="https://www.youtube.com/watch?v=zJmZp41ZnEk" target="blank">
+            	<a href="https://www.youtube.com/watch?v=zJmZp41ZnEk" target="blank" aria-label={$_('navbar.links.youtube')}>
             		<span class="uk-icon" uk-icon="icon: youtube"></span>
             	</a>
             </li>
             <li>
-            	<a href="https://github.com/resah/tablet-weaving" target="blank">
+            	<a href="https://github.com/resah/tablet-weaving" target="blank" aria-label={$_('navbar.links.github')}>
             		<span class="uk-icon uk-margin-small-right" uk-icon="icon: github"></span>
             	</a>
             </li>
@@ -84,6 +84,9 @@
 	}
 	input {
 		border: 0;
+	}
+	.uk-text-meta {
+		color: #333;
 	}
 	
 	@media print {

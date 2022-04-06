@@ -10,6 +10,10 @@
     	"outline": "Fadenumrisse",
     	"weft": "Schussfaden"
     },
+    "links": {
+    	"youtube": "Video with tablet weaving explanations",
+    	"github": "GitHub repository for this project"
+    },
     "info": {
 	    "buildNumber": "Build Nr.",
 	    "buildDate": "Build Datum",
@@ -19,10 +23,13 @@
   "selection": {
   	"pattern": "Musterauswahl",
   	"description": "Mit welchem Muster möchtest du starten?",
+  	"close": "Musterauswahl schließen",
   	"filter": {
   		"label": "Filter",
   		"all": "Alle"
 	},
+	"next": "Nächstes Muster",
+	"previous": "Vorheriges Muster",
   	"preview": "Mustervorschau",
   	"confirm": "Auswählen",
   	"century": {

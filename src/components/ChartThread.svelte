@@ -8,13 +8,13 @@
 <div class="thread" 
 	uk-tooltip={$_("chart.tablet.color")}
 	style="--backgroundColor: {thread.color}">
-	<input type="color" bind:value={thread.color} />
+	<input type="color" bind:value={thread.color} aria-label={$_("chart.tablet.color")} />
 </div>
 
 <style>
 	@media all {
 		.thread {
-			height: 25px;
+			height: 1.3em;
 			margin: 1px 0;
 			background-color: var(--backgroundColor) !important;
 		}

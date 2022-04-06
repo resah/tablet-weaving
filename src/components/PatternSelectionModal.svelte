@@ -11,7 +11,7 @@
 
 <div id="pattern-selection" data-testid="pattern-selection-modal" uk-modal class="uk-modal uk-modal-container" class:uk-open="{$appStorage.tablets.length == 0}">
     <div class="uk-modal-dialog">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <button class="uk-modal-close-default" type="button" uk-close aria-label={$_('selection.close')}></button>
         <div class="uk-modal-header">
             <h2 class="uk-modal-title">
             	{$_('selection.pattern')}
@@ -75,12 +75,12 @@
 							</ul>
 						</div>
 						<div class="uk-hidden@l uk-dark">
-							<button type="button" class="uk-position-top-left uk-position-small" uk-slidenav-previous uk-slider-item="previous"></button>
-							<button type="button" class="uk-position-top-right uk-position-small" uk-slidenav-next uk-slider-item="next"></button>
+							<button type="button" class="uk-position-top-left uk-position-small" uk-slidenav-previous uk-slider-item="previous" aria-label={$_('selection.previous')}></button>
+							<button type="button" class="uk-position-top-right uk-position-small" uk-slidenav-next uk-slider-item="next" aria-label={$_('selection.next')}></button>
 						</div>
 						<div class="uk-visible@l uk-dark">
-							<button type="button" class="uk-position-center-left uk-slidenav-large" uk-slidenav-previous uk-slider-item="previous"></button>
-							<button type="button" class="uk-position-center-right uk-slidenav-large" uk-slidenav-next uk-slider-item="next"></button>
+							<button type="button" class="uk-position-center-left uk-slidenav-large" uk-slidenav-previous uk-slider-item="previous" aria-label={$_('selection.previous')}></button>
+							<button type="button" class="uk-position-center-right uk-slidenav-large" uk-slidenav-next uk-slider-item="next" aria-label={$_('selection.next')}></button>
 						</div>
 					</div>
 				</div>

@@ -22,7 +22,10 @@
 	{/each}
 	
 	<div class="threadDirection">
-		<button on:click={toggleDirection} uk-tooltip={$_("chart.tablet.switch")} data-testid="toggle-direction">
+		<button on:click={toggleDirection} 
+			uk-tooltip={$_("chart.tablet.switch")} 
+			data-testid="toggle-direction"
+			aria-label={$_("chart.tablet.switch")}>
 			{#if tablet.sDirection}
 			  S
 			{:else}
@@ -40,12 +43,12 @@
 			max-width: 30px;
 		}
 		.tabletIndex {
-			height: 20px;
+			height: 1.3em;
 			background-color: white;
 			border-bottom: 1px solid black;
 		}
 		.threadDirection {
-			height: 25px;
+			height: 1.5em;
 			background-color: lightgray;
 			border-top: 1px solid black;
 			text-align: center;

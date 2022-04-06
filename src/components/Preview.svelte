@@ -35,6 +35,7 @@
 				    <li hidden={!hiddenInstructions}>
 				    	<button type="button"
 				    		data-testid="preview-instructions-show"
+				    		aria-label={$_('preview.patternDevelopment.show')}
 				    		uk-icon="icon: thumbnails"
 				    		uk-tooltip={$_('preview.patternDevelopment.show')}
 				    		on:click={() => hiddenInstructions = false}></button>
@@ -46,6 +47,7 @@
 		    		{$_('preview.patternDevelopment.title')} 
 		    		<button type="button"
 		    			data-testid="preview-instructions-hide"
+		    			aria-label={$_('preview.patternDevelopment.hide')}
 		    			class="uk-button uk-button-link" 
 			    		uk-tooltip={$_('preview.patternDevelopment.hide')}
 		    			on:click={() => hiddenInstructions = true}><span class="uk-margin-small-right" uk-icon="shrink"></span></button>
@@ -59,6 +61,7 @@
 		    		{$_('preview.back.title')}
 		    		<button type="button"
 		    			data-testid="preview-back-hide"
+		    			aria-label={$_('preview.back.hide')} 
 		    			class="uk-button uk-button-link" 
 			    		uk-tooltip={$_('preview.back.hide')} 
 		    			on:click={() => hiddenWeaveBack = true}><span class="uk-margin-small-right" uk-icon="shrink"></span></button>
@@ -69,6 +72,7 @@
 				    <li hidden={!hiddenWeaveBack}>
 				    	<button type="button"
 				    		data-testid="preview-back-show"
+				    		aria-label={$_('preview.back.show')}
 				    		uk-icon="icon: grid"
 				    		uk-tooltip={$_('preview.back.show')}
 				    		on:click={() => hiddenWeaveBack = false}></button>
@@ -83,10 +87,10 @@
 		    <div class="scrollable" hidden={hiddenInstructions} data-test-instructions>
 				<PreviewInstructions />
 		    </div>
-		    <div class="uk-margin-medium-top scrollable" data-test-front-weave>
+		    <div class="uk-margin-small-top scrollable" data-test-front-weave>
 	        	<PreviewWeave weavePattern={$weavesFront}/>
 		    </div>
-		    <div class="uk-margin-medium-top scrollable" hidden={hiddenWeaveBack} data-test-back-weave>
+		    <div class="uk-margin-small-top scrollable" hidden={hiddenWeaveBack} data-test-back-weave>
 		    	<PreviewWeave weavePattern={$weavesBack}/>
 		    </div>
 		    <div class="uk-flex-none"></div>
@@ -98,10 +102,12 @@
 		    <div class="uk-margin-small-top uk-text-center">
 		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="plus"
 		    		data-testid="add-weave-row" 
+		    		aria-label={$_('preview.rows.add')}
 		    		on:click|preventDefault={addWeaveRow}
 		    		uk-tooltip={$_('preview.rows.add')}></button>
 		    	<button class="uk-icon-button uk-button-secondary uk-button-large uk-width-small uk-margin-small-bottom" uk-icon="minus" 
 		    		data-testid="remove-weave-row"
+		    		aria-label={$_('preview.rows.remove')}
 		    		on:click|preventDefault={removeWeaveRow}
 		    		uk-tooltip={$_('preview.rows.remove')}></button>
 		    </div>
@@ -113,6 +119,7 @@
 <style>
 	.scrollable {
 		padding: 10px 0 45px 0;
+		display: contents;
 		/*
 		overflow-x: scroll;
 		overflow-y: visible;

@@ -24,32 +24,30 @@
 				<h2 class="uk-heading-small uk-margin-small-top">{template.name}</h2>
 				<div>
 					<table class="uk-table uk-table-small uk-table-responsive uk-text-light">
-					    <tbody>
-					    	{#if template.region}
-					        <tr>
-					            <td class="uk-table-shrink">{$_('selection.region.label')}</td>
-					            <td class="uk-table-expand">{template.region}</td>
-					        </tr>
-					    	{/if}
-					    	{#if template.century}
-					        <tr>
-					            <td class="uk-table-shrink">{$_('selection.century.label')}</td>
-					            <td class="uk-table-expand">{$_('selection.century.value', { values: { century: template.century } })}</td>
-					        </tr>
-					    	{/if}
-					    	{#if template.technique}
-					        <tr>
-					            <td class="uk-table-shrink">{$_('selection.technique.label')}</td>
-					            <td class="uk-table-expand">{template.technique}</td>
-					        </tr>
-					    	{/if}
-					    	{#if template.tablets}
-					        <tr>
-					            <td class="uk-table-shrink">{$_('selection.tablets.label')}</td>
-					            <td class="uk-table-expand">{template.tablets}</td>
-					        </tr>
-					    	{/if}
-					    </tbody>
+				    	{#if template.region}
+				        <tr>
+				            <td class="uk-table-shrink">{$_('selection.region.label')}</td>
+				            <td class="uk-table-expand">{template.region}</td>
+				        </tr>
+				    	{/if}
+				    	{#if template.century}
+				        <tr>
+				            <td class="uk-table-shrink">{$_('selection.century.label')}</td>
+				            <td class="uk-table-expand">{$_('selection.century.value', { values: { century: template.century } })}</td>
+				        </tr>
+				    	{/if}
+				    	{#if template.technique}
+				        <tr>
+				            <td class="uk-table-shrink">{$_('selection.technique.label')}</td>
+				            <td class="uk-table-expand">{template.technique}</td>
+				        </tr>
+				    	{/if}
+				    	{#if template.tablets}
+				        <tr>
+				            <td class="uk-table-shrink">{$_('selection.tablets.label')}</td>
+				            <td class="uk-table-expand">{template.tablets}</td>
+				        </tr>
+				    	{/if}
 					</table>
 				</div>
 				<a class="uk-button uk-button-default uk-text-uppercase uk-display-block uk-position-bottom-right confirmation-button" 

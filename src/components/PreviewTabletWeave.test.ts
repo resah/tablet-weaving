@@ -16,7 +16,6 @@ describe('PreviewTabletWeave component', () => {
 	});
 	
 	expect(container.querySelector('.tablet').classList).toContain('tablet');
-	expect(container.querySelector('.tablet').classList).toContain('weaveSize3');
-	expect(container.querySelector('.tablet').children.length).toBe(3);
+	expect(container.querySelector('.tablet').children.length).toBe(2);
   });
 });

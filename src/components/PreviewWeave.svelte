@@ -7,43 +7,47 @@
     export let weavePattern: Weave[][];
 </script>
 
-<div class="uk-flex uk-flex-center" data-testid="preview-weave">
-	<div class="tabletWeaveIndices weaveSize{$appConfig.weaveSize} uk-text-small">
-    	{#each [...Array($appStorage.weaveRows).keys()] as _, index (index)}
-    		<div class="tabletWeaveIndex {index % 2 ? 'even' : 'odd'}">
-    			{index + 1}
-    		</div>
-		{/each}
-	</div>
+<svg xmlns="http://www.w3.org/2000/svg" 
+	class="svg-pattern svg-pattern-{$appConfig.weaveSize}"
+	viewBox="0 0 {$appStorage.tablets.length * 5 + 10} {$appStorage.weaveRows * 10 + 20}"
+	data-testid="preview-weave">
 	
+    <symbol id="baseWeave" viewBox="0 0 0.25 1">
+        <path d="M 0,0 L 0.25,0.5 L 0.25,1 L 0,1 Z" stroke={$appConfig.weaveBorderColor} stroke-width="0.01" />
+    </symbol>
+    <pattern id="pattern-checkers" x="0" y="0" width="0.25" height="1" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="1" stroke="#5555FF" stroke-width="0.05" />
+        <line x1="0.25" y1="0.5" x2="0.25" y2="1" stroke="#5555FF" stroke-width="0.05" />
+	</pattern>
+
 	{#each weavePattern as tablet, index (index)}
 		<PreviewTabletWeave weaves={tablet} tabletIndex={index}/>
 	{/each}
-</div>
+
+	<g id="index-numbers" class="tabletWeaveIndices">
+		{#each [...Array($appStorage.weaveRows).keys()] as _, index (index)}
+			<text x="0" y={index * 10 + 7} font-size="0.25em" class="small tabletWeaveIndex">{index + 1}</text>
+			<line x1="5" y1={index * 10 + 5.5} x2="8" y2={index * 10 + 5.5} stroke="#333333" stroke-width="0.2" />
+			<line x1="8" y1={index * 10 + 5.5} x2="12.5" y2={index * 10 + 9} stroke="#333333" stroke-width="0.2" />
+		{/each}
+	</g>
+</svg>
 
 <style>
-	@media all {
-		.tabletWeaveIndices {
-			width: 25px;
-			text-align: right;
-			padding-right: 5px;
-			margin-top: -25px;
-		}
-		.weaveSize1 .tabletWeaveIndex {
-			height: 14px;
-			padding-top: 0;
-		}
-		.weaveSize2 .tabletWeaveIndex {
-			height: 24px;
-			padding-top: 0;
-		}
-		.weaveSize3 .tabletWeaveIndex {
-			height: 18px;
-			padding-top: 3.7px;
-		}
-		.weaveSize1 .even,
-		.weaveSize2 .even {
-			display: none;
-		}
+	.svg-pattern {
+		margin-top: 1.5em;
+		width: 15em;
+	}
+	.svg-pattern-1 {
+		width: 5em;
+	}
+	.svg-pattern-2 {
+		width: 10em;
+	}
+	.svg-pattern-4 {
+		width: 20em;
+	}
+	.svg-pattern-5 {
+		width: 25em;
 	}
 </style>

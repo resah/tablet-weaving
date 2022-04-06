@@ -1,60 +1,31 @@
 <script lang="ts">
-	import { appConfig } from '../stores/appConfig';
 	import type { Weave } from '../model/Weave';
+	import { hoverColumn, hoverRow } from '../stores/previewHover';
 
 	export let tabletIndex: number;
 	export let weaveRow: number;
 	export let weave: Weave;
-	export let classNames: string = '';
+	
+	const hover = (row: number, column: number) => {
+		$hoverRow = row;
+		$hoverColumn = column;
+	}
 </script>
 
-<div class="weave weaveSize{$appConfig.weaveSize} {classNames}"
+<use href="#baseWeave" 
+	class="weave"
+	width=5
+	height=20
+	x={ tabletIndex * 5 + 10 } 
+	y={ weaveRow * 10 } 
+	fill={ weave.color }
+	transform="scale({weave.sDirection ? 1 : -1},1)"
+	transform-origin="{(tabletIndex * 5 + 10) + 2.5} 0"
 	data-testid="preview-thread-weave"
-	uk-tooltip="{tabletIndex + 1}, {weaveRow + 1}" 
-	class:sDirection={weave.sDirection} 
-	style="--backgroundColor: {weave.color}; --borderColor: {$appConfig.weaveBorderColor}">
-</div>
-
-<style>
-	@media all {
-		.weave {
-			margin-top: -25px;
-			border: 1px solid #AAAAAA;
-			background-color: var(--backgroundColor) !important;
-			border-color: var(--borderColor) !important;
-		}
 	
-		.weaveSize1 {
-			width: 7px;
-			height: 30px;
-			transform: skew(0, -40deg);
-		}
-		.weaveSize1.sDirection {
-			transform: skew(0, 40deg);
-		}
-		.weaveSize2 {
-			width: 10px;
-			height: 35px;
-			transform: skew(0, -50deg);
-		}
-		.weaveSize2.sDirection {
-			transform: skew(0, 50deg);
-		}
-		.weaveSize3 {
-			width: 13px;
-			height: 45px;
-			transform: skew(0, -58deg);
-		}
-		.weaveSize3.sDirection {
-			transform: skew(0, 58deg);
-		}
-		
-		.final {
-			background-color: #FFFFFF;
-			border-left-color: #FFFFFF;
-			border-right-color: #FFFFFF;
-			border-bottom: 0;
-			height: auto;
-		}
-	}
-</style>
+	class:hover="{ $hoverColumn == weaveRow || $hoverRow == tabletIndex }"
+	on:mouseover={() => hover(tabletIndex, weaveRow)}
+	on:focus={() => hover(tabletIndex, weaveRow)}
+	on:mouseout={() => hover(-1, -1)}
+	on:blur={() => hover(-1, -1)}
+	 />

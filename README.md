@@ -22,6 +22,7 @@ Still work in progress.
 * Select template by name
 * Setting thread thickness
 * SVG view (with dynamic zoom option)
+* Option to disable weave outlines
 * Convenience:
   * Minimize instructions panel
   * Minimize back view
@@ -32,7 +33,6 @@ Still work in progress.
 * Versioned pattern storage/link
 * Changelog 
   * visitor hints about changes
-* Option to disable weave outlines
 * PDF generation
 * Print view
 * Mobile view

@@ -14,6 +14,7 @@ describe('appConfig store', () => {
 	  expect(appConfigValue.weaveBorderColor).toEqual('#AAAAAA');
 	  expect(appConfigValue.weftColor).toEqual('#000000');
 	  expect(appConfigValue.weaveLength).toEqual(100);
+	  expect(appConfigValue.showWeaveBorder).toEqual(true);
 	});
 	
 	test('should update local storage if config is updated', () => {
@@ -30,5 +31,6 @@ describe('appConfig store', () => {
 	  expect(updatedAppConfig.weaveBorderColor).toBe("#000000");
 	  expect(updatedAppConfig.weftColor).toBe("#FFFFFF");
 	  expect(updatedAppConfig.weaveLength).toBe(20);
+	  expect(updatedAppConfig.showWeaveBorder).toEqual(true);
 	});
 });

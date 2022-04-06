@@ -31,6 +31,7 @@
                     	</li>
                     	<li>
                     		{$_('navbar.preview.outline')}:
+                    		<input class="uk-checkbox" type="checkbox" bind:checked={$appConfig.showWeaveBorder}/>
                     		<input class="uk-input" type="color" bind:value={$appConfig.weaveBorderColor}/>
                     	</li>
                     	<li>
@@ -82,7 +83,8 @@
 		color: #666;
 		text-transform: uppercase;
 	}
-	input {
+	input[type="color"],
+	input[type="range"] {
 		border: 0;
 	}
 	.uk-text-meta {

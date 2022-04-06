@@ -13,7 +13,11 @@
 	data-testid="preview-weave">
 	
     <symbol id="baseWeave" viewBox="0 0 0.25 1">
-        <path d="M 0,0 L 0.25,0.5 L 0.25,1 L 0,1 Z" stroke={$appConfig.weaveBorderColor} stroke-width="0.01" />
+    	{#if $appConfig.showWeaveBorder }
+    	    <path d="M 0,0 L 0.25,0.5 L 0.25,1 L 0,1 Z" stroke={$appConfig.weaveBorderColor} stroke-width="0.01" />
+    	{:else}
+	        <path d="M 0,0 L 0.25,0.5 L 0.25,1 L 0,1 Z" />
+    	{/if}
     </symbol>
     <pattern id="pattern-checkers" x="0" y="0" width="0.25" height="1" patternUnits="userSpaceOnUse">
         <line x1="0" y1="0" x2="0" y2="1" stroke="#5555FF" stroke-width="0.05" />

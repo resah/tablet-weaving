@@ -28,7 +28,10 @@
 		{#each [...Array($appStorage.weaveRows).keys()] as _, index (index)}
 			<text x="0" y={index * 10 + 7} font-size="0.25em" class="small tabletWeaveIndex">{index + 1}</text>
 			<line x1="5" y1={index * 10 + 5.5} x2="8" y2={index * 10 + 5.5} stroke="#333333" stroke-width="0.2" />
+			<line x1="5" y1={index * 10 + 6} x2="8" y2={index * 10 + 6} stroke="#FFFFFF" stroke-width="0.2" />
+
 			<line x1="8" y1={index * 10 + 5.5} x2="12.5" y2={index * 10 + 9} stroke="#333333" stroke-width="0.2" />
+			<line x1="8" y1={index * 10 + 6} x2="12.5" y2={index * 10 + 9.5} stroke="#FFFFFF" stroke-width="0.2" />
 		{/each}
 	</g>
 </svg>

@@ -19,10 +19,18 @@
 	        <path d="M 0,0 L 0.25,0.5 L 0.25,1 L 0,1 Z" />
     	{/if}
     </symbol>
-    <pattern id="pattern-checkers" x="0" y="0" width="0.25" height="1" patternUnits="userSpaceOnUse">
-        <line x1="0" y1="0" x2="0" y2="1" stroke="#5555FF" stroke-width="0.05" />
-        <line x1="0.25" y1="0.5" x2="0.25" y2="1" stroke="#5555FF" stroke-width="0.05" />
-	</pattern>
+    <symbol id="inverseWeave" viewBox="0 0 0.25 1">
+    	{#if $appConfig.showWeaveBorder }
+    	    <path d="M 0.25,0 L 0.25,1 L 0,1 L 0,0.5 Z" stroke={$appConfig.weaveBorderColor} stroke-width="0.01" />
+    	{:else}
+	        <path d="M 0.25,0 L 0.25,1 L 0,1 L 0,0.5 Z" />
+    	{/if}
+    </symbol>
+	<pattern id="pattern-checkers" x="0" y="0" width="0.2" height="0.2" patternUnits="userSpaceOnUse">
+		<rect fill="#ffffff" x="0" y="0" width="0.2" height="0.2"></rect>
+    	<rect fill="#bbbbbb" x="0" y="0" width="0.1" height="0.1"></rect>
+    	<rect fill="#cccccc" x="0.1" y="0.1" width="0.1" height="0.1"></rect>
+    </pattern>
 
 	{#each weavePattern as tablet, index (index)}
 		<PreviewTabletWeave weaves={tablet} tabletIndex={index}/>

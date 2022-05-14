@@ -38,7 +38,7 @@
 			        <div>
 			            <ul class="uk-subnav uk-subnav-pill">
 			                <li class="uk-active" uk-filter-control>
-			                	<a href="#">{$_('selection.filter.all')}</a>
+			                	<a href="#" aria-label="{$_('selection.filter.all')}">{$_('selection.filter.all')}</a>
 			                </li>
 			            </ul>
 			        </div>
@@ -46,7 +46,7 @@
 			            <ul class="uk-subnav uk-subnav-pill">
 			            	{#each $techniques as technique, index (index)}
 			            		{#if technique.length > 0}
-				                	<li uk-filter-control="filter: [data-technique='{technique}']; group: data-technique"><a href="#">{technique}</a></li>
+				                	<li uk-filter-control="filter: [data-technique='{technique}']; group: data-technique"><a href="#" aria-label="{technique}">{technique}</a></li>
 				                {/if}
 			                {/each}
 			            </ul>
@@ -55,7 +55,7 @@
 			            <ul class="uk-subnav uk-subnav-pill">
 			            	{#each $regions as region, index (index)}
 			            		{#if region.length > 0}
-				                	<li uk-filter-control="filter: [data-region='{region}']; group: data-region"><a href="#">{region}</a></li>
+				                	<li uk-filter-control="filter: [data-region='{region}']; group: data-region"><a href="#" aria-label="{region}">{region}</a></li>
 				                {/if}
 			                {/each}
 			            </ul>

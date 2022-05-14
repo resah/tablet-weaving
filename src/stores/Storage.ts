@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
 import type { Instruction } from '../model/instruction.type';
 import { Tablet } from '../model/Tablet';
+import { appConfig } from './appConfig';
 
 const LOCAL_STORAGE_KEY = 'tabletWeaving';
 
@@ -66,6 +67,15 @@ export class Storage {
 				initRotationDirections[row][col] = parts[2][(row * numberOfTablets + col)] === '1';
 			});
 		});
+
+		// activate pebble weave, if pattern uses it
+		if (parts[3].indexOf("#XXXXXX") >= 0) {
+			appConfig.update((ac) => {
+				ac.enablePebbleWeave = true;
+				return ac;
+			});
+		}
+		
 		const initTablets: Tablet[] = parts[3].substring(1).split('|').map(tablet => {
 			return Tablet.fromString(tablet);
 		});

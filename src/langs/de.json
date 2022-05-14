@@ -5,7 +5,8 @@
     "templates": "Musterauswahl",
     "display": "Anzeige",
     "preview": {
-    	"weave": "Vorschau Gewebe",
+    	"weave": "Gewebe",
+    	"pebbleWeave": "Stippengewebe aktivieren",
     	"size": "Größe",
     	"outline": "Fadenumrisse",
     	"weft": "Schussfaden"
@@ -54,7 +55,8 @@
   		"remove": "Brettchen entfernen",
   		"index": "Brettchen #{index}",
   		"switch": "Schärung umkehren",
-  		"color": "Farbe wählen"
+  		"color": "Farbe wählen",
+  		"pebbleWeave": "kein Faden"
   	},
   	"summary": {
   		"title": "Fadenübersicht",

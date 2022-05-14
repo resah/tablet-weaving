@@ -6,6 +6,7 @@
     "display": "Display",
     "preview": {
     	"weave": "Preview weave",
+    	"pebbleWeave": "Enable pebble weave",
     	"size": "Size",
     	"outline": "Thread outline",
     	"weft": "Weft"
@@ -54,7 +55,8 @@
   		"remove": "Remove tablet",
   		"index": "Tablet #{index}",
   		"switch": "Invert tablet slant",
-  		"color": "Choose colour"
+  		"color": "Choose colour",
+  		"pebbleWeave": "no thread"
   	},
   	"summary": {
   		"title": "Threading overview",

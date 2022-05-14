@@ -26,6 +26,9 @@
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                     	<li class="uk-nav-header">{$_('navbar.preview.weave')}</li>
                         <li>
+                        	{$_('navbar.preview.pebbleWeave')}: <input class="uk-checkbox" type="checkbox" bind:checked={$appConfig.enablePebbleWeave} />
+                    	</li>
+                        <li>
                         	{$_('navbar.preview.size')}:
                         	<input class="uk-range" type="range" min="1" max="5" step="1" bind:value={$appConfig.weaveSize} />
                     	</li>
@@ -77,6 +80,12 @@
 </nav>
 
 <style>
+	.uk-navbar-dropdown {
+		width: 250px;
+	}
+	.uk-navbar-dropdown li {
+		padding: 0 0 15px;
+	}
 	.uk-navbar-nav > li > a,
 	.uk-navbar-nav > li > button {
 		min-height: 50px;

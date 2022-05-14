@@ -14,7 +14,7 @@ describe('PreviewThreadWeave component', () => {
 	});
 
 	expect(container.querySelector('.weave').classList).toContain('weave');
-	expect(container.querySelector('.weave').getAttribute('transform')).toEqual('scale(1,1)');
+	expect(container.querySelector('.weave').getAttribute('href')).toEqual('#baseWeave');
 	expect(container.querySelector('.weave').getAttribute('fill')).toEqual('#44bb22');
   });
 });

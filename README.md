@@ -23,6 +23,7 @@ Still work in progress.
 * Setting thread thickness
 * SVG view (with dynamic zoom option)
 * Option to disable weave outlines
+* "Missed hole“ or "pebble weave" (beta)
 * Convenience:
   * Minimize instructions panel
   * Minimize back view
@@ -39,7 +40,6 @@ Still work in progress.
 * Help page with links and resources about tablet weaving
 * Lock direction switches for columns (to allow easier outer supporting weaves)
 * Share copy-paste menu entry
-* "Missed hole“ or "pebble weave"
 * Set number of holes for tablets
 * Custom colour picker (maybe selectable from different versions)
 * Inverted view (bottom-up, which seems to be used more often)

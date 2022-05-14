@@ -85,7 +85,7 @@
 			padding: 0 1px;
 		}
 		th, td {
-			min-width: 1em;
+			min-width: 1.2em;
 			height: 1.5em;
 			border: 1px solid #999999;
 			line-height: 1.3em;

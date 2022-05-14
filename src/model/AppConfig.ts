@@ -5,4 +5,5 @@ export class AppConfig {
 	weftColor: string = '#000000';
 	weaveLength: number = 100;
 	showWeaveBorder: boolean = true;
+	enablePebbleWeave: boolean = false;
 }

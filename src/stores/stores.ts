@@ -10,7 +10,9 @@ const patternColors = derived(appStorage, ($appStorage: Storage): ColorIndex[] =
 	const summary: {[key: string]: number} = {};
 	$appStorage.tablets.forEach((tablet) => {
 		tablet.threads.forEach((thread) => {
-			if (typeof summary[thread.color] == 'undefined') {
+			if (thread.empty) {
+				return;
+			} else if (typeof summary[thread.color] == 'undefined') {
 				summary[thread.color] = 1;
 			} else {
 				summary[thread.color] = summary[thread.color] + 1;

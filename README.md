@@ -9,7 +9,7 @@ A small tool to create a preview and instructions for a custom tablet weaving pa
 
 Still work in progress.
 
-### Features
+## Features
 
 * Change number of 4-hole tablets
 * Set thread colors for each hole
@@ -44,6 +44,8 @@ Still work in progress.
 * Custom colour picker (maybe selectable from different versions)
 * Inverted view (bottom-up, which seems to be used more often)
 * PWA
+* Pattern repeat every X rows
+* Weaving helper: mark current row and iterate through rows by pressing space
 
 ### Not planned for now
 
@@ -66,4 +68,4 @@ npm install
 npm run dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running.
+Navigate to [localhost:8080](http://localhost:8080). You should see the app running.

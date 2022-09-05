@@ -3,10 +3,13 @@
   "navbar": {
     "title": "Brettchenweben",
     "templates": "Musterauswahl",
-    "display": "Anzeige",
+    "features": {
+    	"title": "Funktionen",
+    	"pebbleWeave": "Stippengewebe aktivieren"
+    },
     "preview": {
+    	"title": "Anzeige",
     	"weave": "Gewebe",
-    	"pebbleWeave": "Stippengewebe aktivieren",
     	"size": "Größe",
     	"outline": "Fadenumrisse",
     	"weft": "Schussfaden"

@@ -24,6 +24,7 @@ Still work in progress.
 * SVG view (with dynamic zoom option)
 * Option to disable weave outlines
 * "Missed hole“ or "pebble weave" (beta)
+* Lock direction switches for columns (to allow easier outer supporting weaves)
 * Convenience:
   * Minimize instructions panel
   * Minimize back view
@@ -31,6 +32,9 @@ Still work in progress.
 
 ### Planned features
 
+* Inverted view (bottom-up, which seems to be used more often)
+* Weaving helper: mark current row and iterate through rows by pressing space
+* Share copy-paste menu entry
 * Versioned pattern storage/link
 * Changelog 
   * visitor hints about changes
@@ -38,14 +42,11 @@ Still work in progress.
 * Print view
 * Mobile view
 * Help page with links and resources about tablet weaving
-* Lock direction switches for columns (to allow easier outer supporting weaves)
-* Share copy-paste menu entry
 * Set number of holes for tablets
 * Custom colour picker (maybe selectable from different versions)
-* Inverted view (bottom-up, which seems to be used more often)
 * PWA
 * Pattern repeat every X rows
-* Weaving helper: mark current row and iterate through rows by pressing space
+* Translations in pattern selector for pattern attributes
 
 ### Not planned for now
 

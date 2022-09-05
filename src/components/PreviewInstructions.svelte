@@ -13,7 +13,9 @@
 	
 	const changeDirectionForRow = (row: number) => {
 		$appStorage.tablets.forEach((_, column) => {
-			changeDirectionForCell(row, column);
+			if (!$appStorage.locks[column]) {
+				changeDirectionForCell(row, column);
+			}
 		});
 	}
 	
@@ -29,9 +31,19 @@
 		}
 	}
 	
-	const hover = (column: number, row: number) => {
-		$hoverRow = row;
-		$hoverColumn = column;
+	const changeLockForColumn = (column: number) => {
+		$appStorage.locks[column] = !$appStorage.locks[column];
+	}
+	
+	const hover = (row: number, column: number) => {
+		$hoverColumn = -1;
+		$hoverRow = -1;
+		if (column >= 0) {
+			$hoverColumn = column;
+		}
+		if (row >= 0) {
+			$hoverRow = row;
+		}
 	}
 </script>
 
@@ -46,12 +58,45 @@
 				uk-tooltip={$_('preview.patternDevelopment.reset')}></button>
 		</th>
 		{#each $appStorage.tablets as _, j (j)}
-			<th>{j + 1}</th>
+			<th 
+				class:hover="{ $hoverColumn == j }"
+				on:mouseover={() => hover(j, -1)}
+				on:focus={() => hover(j, -1)}
+				on:mouseout={() => hover(-1, -1)}
+				on:blur={() => hover(-1, -1)}>{j + 1}</th>
+		{/each}
+	</tr>
+	<tr>
+		<td></td>
+		{#each $appStorage.locks as lock, l (l)}
+			<td 
+				class:hover="{ $hoverColumn == l }"
+				on:mouseover={() => hover(-1, l)}
+				on:focus={() => hover(-1, l)}
+				on:mouseout={() => hover(-1, -1)}
+				on:blur={() => hover(-1, -1)}>
+				{#if lock}
+					<button type="button" on:click={() => changeLockForColumn(l)}
+						uk-icon="icon: unlock" 
+						aria-label={$_('preview.patternDevelopment.reset')}
+						uk-tooltip={$_('preview.patternDevelopment.reset')}></button>
+				{:else}
+					<button type="button" on:click={() => changeLockForColumn(l)}
+						uk-icon="icon: lock" 
+						aria-label={$_('preview.patternDevelopment.reset')}
+						uk-tooltip={$_('preview.patternDevelopment.reset')}></button>
+				{/if}
+			</td>
 		{/each}
 	</tr>
 	{#each [...Array($appStorage.weaveRows).keys()] as row, i (i)}
 		<tr>
-			<th class="uk-text-right">
+			<th class="uk-text-right"
+				class:hover="{ $hoverRow == i }"
+				on:mouseover={() => hover(i, -1)}
+				on:focus={() => hover(i, -1)}
+				on:mouseout={() => hover(-1, -1)}
+				on:blur={() => hover(-1, -1)}>
 				<button type="button" on:click={() => changeDirectionForRow(i)}
 					data-testid="toggle-directions-row-{i}"
 					aria-label={$_('preview.patternDevelopment.switchAll')}
@@ -59,15 +104,24 @@
 			</th>
 			{#each $appStorage.tablets as tablet, j (j)}
 				<td class:active="{ isActive(i, j) }"
-					class:hover="{ $hoverColumn == i || $hoverRow == j }"
+					class:hover="{ $hoverColumn == j || $hoverRow == i }"
+					class:lock="{ $appStorage.locks[j] }"
 					on:mouseover={() => hover(i, j)}
 					on:focus={() => hover(i, j)}
 					on:mouseout={() => hover(-1, -1)}
 					on:blur={() => hover(-1, -1)}>
-					<button type="button" class="cellLink" on:click={() => changeDirectionForCell(i, j)}
-						data-testid="toggle-directions-cell-{i}-{j}"
-						aria-label={$_('preview.patternDevelopment.index', { values: { column: (j+1), row: (i+1) } })}
-						uk-tooltip={$_('preview.patternDevelopment.index', { values: { column: (j+1), row: (i+1) } })} >&nbsp;</button>
+					
+					{#if $appStorage.locks[j]}
+						<button type="button" class="cellLink" disabled
+							data-testid="toggle-directions-cell-{i}-{j}"
+							aria-label={$_('preview.patternDevelopment.index', { values: { column: (j+1), row: (i+1) } })}
+							uk-tooltip={$_('preview.patternDevelopment.index', { values: { column: (j+1), row: (i+1) } })} >&nbsp;</button>
+					{:else}
+						<button type="button" class="cellLink" on:click={() => changeDirectionForCell(i, j)}
+							data-testid="toggle-directions-cell-{i}-{j}"
+							aria-label={$_('preview.patternDevelopment.index', { values: { column: (j+1), row: (i+1) } })}
+							uk-tooltip={$_('preview.patternDevelopment.index', { values: { column: (j+1), row: (i+1) } })} >&nbsp;</button>
+					{/if}
 				</td>
 			{/each}
 		</tr>
@@ -108,12 +162,26 @@
 		.hover {
 			background-color: rgba(255, 255, 200, 0.6) !important;
 		}
+		.lock {
+			background-image: linear-gradient(
+				45deg, rgba(255, 255, 255, 0.5) 18.18%, 
+				rgba(200, 200, 200, 0.5) 18.18%, 
+				rgba(200, 200, 200, 0.5) 50%, 
+				rgba(255, 255, 255, 0.5) 50%, 
+				rgba(255, 255, 255, 0.5) 68.18%, 
+				rgba(200, 200, 200, 0.5) 68.18%, 
+				rgba(200, 200, 200, 0.5) 100%);
+			background-size: 11.00px 11.00px;
+		}
 		button {
 			display: inline;
 			border: 0;
 			background-color: transparent;
 			padding: 0;
 			margin: 0;
+		}
+		button:disabled {
+			cursor: default;
 		}
 		
 		td:hover button.cellLink {

@@ -12,8 +12,9 @@ describe('PreviewInstructions component', () => {
   test('should render component correctly', () => {
     const { container } = render(PreviewInstructions);
 	
-	expect(container.querySelectorAll('tr').length).toBe(11);
-	expect(container.querySelectorAll('button').length).toBe(31);
+	// headline row + lock row + 10 weave rows
+	expect(container.querySelectorAll('tr').length).toBe(12);
+	expect(container.querySelectorAll('button').length).toBe(33);
   });
 
   test('should reset tablet rotations', async () => {

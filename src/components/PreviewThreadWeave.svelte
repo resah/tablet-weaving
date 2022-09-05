@@ -21,9 +21,9 @@
 	fill={ weave.empty ? 'url(#pattern-checkers)' : weave.color }
 	data-testid="preview-thread-weave"
 	
-	class:hover="{ $hoverColumn == weaveRow || $hoverRow == tabletIndex }"
-	on:mouseover={() => hover(tabletIndex, weaveRow)}
-	on:focus={() => hover(tabletIndex, weaveRow)}
+	class:hover="{ $hoverColumn == tabletIndex || $hoverRow == weaveRow }"
+	on:mouseover={() => hover(weaveRow, tabletIndex)}
+	on:focus={() => hover(weaveRow, tabletIndex)}
 	on:mouseout={() => hover(-1, -1)}
 	on:blur={() => hover(-1, -1)}
-	 />
+	/>

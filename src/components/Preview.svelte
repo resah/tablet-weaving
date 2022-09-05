@@ -120,10 +120,6 @@
 	.scrollable {
 		padding: 10px 0 45px 0;
 		display: contents;
-		/*
-		overflow-x: scroll;
-		overflow-y: visible;
-		*/
 	}
 	
 	@media print {

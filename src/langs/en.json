@@ -3,10 +3,13 @@
   "navbar": {
     "title": "Tablet Weaving",
     "templates": "Pattern Selection",
-    "display": "Display",
+    "features": {
+    	"title": "Features",
+    	"pebbleWeave": "Enable pebble weave"
+    },
     "preview": {
-    	"weave": "Preview weave",
-    	"pebbleWeave": "Enable pebble weave",
+    	"title": "Display",
+    	"weave": "Weave",
     	"size": "Size",
     	"outline": "Thread outline",
     	"weft": "Weft"

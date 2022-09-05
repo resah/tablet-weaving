@@ -10,6 +10,7 @@ export class Storage {
 	weaveRows: number;
 	tablets: Tablet[];
 	rotationDirections: Instruction;
+	locks: boolean[];
 	
     constructor() {
 		// has URL -> load from URL
@@ -34,6 +35,7 @@ export class Storage {
 		this.weaveRows = 0;
 		this.tablets = [];
 		this.rotationDirections = {};
+		this.locks = [];
  	}
 	
 	toString(): string {
@@ -76,7 +78,9 @@ export class Storage {
 			});
 		}
 		
+		this.locks = [];
 		const initTablets: Tablet[] = parts[3].substring(1).split('|').map(tablet => {
+			this.locks.push(false);
 			return Tablet.fromString(tablet);
 		});
 		

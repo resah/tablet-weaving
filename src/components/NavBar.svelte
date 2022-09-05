@@ -21,13 +21,19 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             <li>
-                <a href={'#'}>{$_('navbar.display')}</a>
+                <a href={'#'}>{$_('navbar.features.title')}</a>
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                    	<li class="uk-nav-header">{$_('navbar.preview.weave')}</li>
                         <li>
-                        	{$_('navbar.preview.pebbleWeave')}: <input class="uk-checkbox" type="checkbox" bind:checked={$appConfig.enablePebbleWeave} />
+                        	{$_('navbar.features.pebbleWeave')}: <input class="uk-checkbox" type="checkbox" bind:checked={$appConfig.enablePebbleWeave} />
                     	</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href={'#'}>{$_('navbar.preview.title')}</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li>
                         	{$_('navbar.preview.size')}:
                         	<input class="uk-range" type="range" min="1" max="5" step="1" bind:value={$appConfig.weaveSize} />
